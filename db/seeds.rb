@@ -23,9 +23,28 @@ end
 
 @restaurant_count = Restaurant.all.count
 
-(@restaurant_count * 2).times do
+(@restaurant_count * 10).times do
   Dish.create(
     name: Faker::Food.dish,
     restaurant_id: rand(1..@restaurant_count)
+  )
+end
+
+@user_count = User.all.count
+
+(@user_count * 3).times do
+  List.create(
+    user_id: rand(1..@user_count),
+    status: "current"
+  )
+end
+
+@dish_count = Dish.all.count
+@list_count = List.all.count
+
+(@list_count * 3).times do
+  ListItem.create(
+    list_id: rand(1..@list_count),
+    dish_id: rand(1..@dish_count)
   )
 end

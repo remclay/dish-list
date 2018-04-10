@@ -1,0 +1,6 @@
+<h1>List by <%= @list.user.email %></h1>
+
+<% @list.list_items.each do |list_item| %><br>
+  <strong>Restaurant:</strong> <%= link_to list_item.dish.restaurant.name, restaurant_path(list_item.dish.restaurant) %><br>
+  <strong>Dish:</strong> <%= list_item.dish.name %><br>
+<% end %>
