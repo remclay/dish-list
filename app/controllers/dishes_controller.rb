@@ -7,11 +7,15 @@ class DishesController < ApplicationController
     @dish = Dish.new
     @restaurants = Restaurant.all
     @restaurant = Restaurant.new
+    @lists = current_user.lists
   end
 
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
+      if params[:dish][:list_ids]
+        assign_to_list
+      end
       redirect_to dish_path(@dish), alert: "Dish successfully created"
     else
       flash[:alert] = @dish.errors.full_messages.first
@@ -21,6 +25,12 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find_by(id: params[:id])
+  end
+
+  def assign_to_list
+    @list = current_user.lists.find_by(id: params[:dish][:list_ids])
+    list_item = @list.list_items.create(dish_id: @dish.id)
+    # Move and abstract away. Add conditional logic if !list_item.save
   end
 
   private

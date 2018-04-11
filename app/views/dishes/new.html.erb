@@ -4,17 +4,24 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
 
-  <h3>Where can I try this dish?</h3>
+  <h4>Where can I try this dish?</h4>
   <p>Select existing restaurant:</p>
 
 <%= f.collection_select :restaurant_id, @restaurants, :id, :name, :include_blank => true %>
 
   <p>Or create a new restaurant:</p>
   <%= f.fields_for :restaurant, @restaurant do |restaurant_fields| %>
-    Name: <%= restaurant_fields.text_field :name %><br>
-    Cuisine: <%= restaurant_fields.text_field :cuisine %><br>
-    Location: <%= restaurant_fields.text_field :location %><br><br>
+    <%= restaurant_fields.label :name %>
+    <%= restaurant_fields.text_field :name %><br>
+    <%= restaurant_fields.label :cuisine %>
+    <%= restaurant_fields.text_field :cuisine %><br>
+    <%= restaurant_fields.label :location %>
+    <%= restaurant_fields.text_field :location %><br><br>
   <% end %>
+
+  <h4>Add this dish to my list
+    <%= f.collection_select :list_ids, @lists, :id, :title, :include_blank => true %>
+  </h4>
 
   <%= f.submit %>
 <% end %>
