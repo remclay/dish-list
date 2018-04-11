@@ -19,6 +19,10 @@ class DishesController < ApplicationController
     end
   end
 
+  def show
+    @dish = Dish.find_by(id: params[:id])
+  end
+
   private
   def dish_params
     params.require(:dish).permit(:name, :restaurant_id, restaurant_attributes: [:name, :cuisine, :location])
