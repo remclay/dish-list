@@ -7,10 +7,10 @@
   <h3>Where can I try this dish?</h3>
   <p>Select existing restaurant:</p>
 
-<%= collection_select(:dish, :restaurant_id, @restaurants, :id, :name, :include_blank => true) %>
+<%= f.collection_select :restaurant_id, @restaurants, :id, :name, :include_blank => true %>
 
   <p>Or create a new restaurant:</p>
-  <%= fields_for :restaurant, @restaurant do |restaurant_fields| %>
+  <%= f.fields_for :restaurant, @restaurant do |restaurant_fields| %>
     Name: <%= restaurant_fields.text_field :name %><br>
     Cuisine: <%= restaurant_fields.text_field :cuisine %><br>
     Location: <%= restaurant_fields.text_field :location %><br><br>

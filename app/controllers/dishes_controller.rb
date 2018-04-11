@@ -6,16 +6,22 @@ class DishesController < ApplicationController
   def new
     @dish = Dish.new
     @restaurants = Restaurant.all
+    @restaurant = Restaurant.new
   end
 
   def create
     @dish = Dish.new(dish_params)
-    binding.pry
+    if @dish.save
+      redirect_to dish_path(@dish), alert: "Dish successfully created"
+    else
+      flash[:alert] = @dish.errors.full_messages.first
+      redirect_to new_dish_path
+    end
   end
 
   private
   def dish_params
-    params.require(:dish).permit(:name, :restaurant_id)
+    params.require(:dish).permit(:name, :restaurant_id, restaurant_attributes: [:name, :cuisine, :location])
   end
 
   def require_login
