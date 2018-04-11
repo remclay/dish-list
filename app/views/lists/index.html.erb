@@ -1,6 +1,16 @@
-<h1>All lists</h1>
+<h1>Lists</h1>
+
+<% if !user_signed_in? %>
+  <p>Sign in to view full lists and authors</p>
+<% else %>
+  <p>Click on a list to view details</p>
+<% end %>
 
 <% @lists.each do |list| %>
-  <h3><%= link_to list.title, list_path(list) %></h3>
-  <p>List by <%= list.user.name %></p>
+  <% if user_signed_in? %>
+    <h3><%= link_to list.title, list_path(list) %></h3>
+    <p>List by <%= list.user.name %></p>
+  <% else %>
+    <h3><%= list.title %></h3>
+  <% end %>
 <% end %>
