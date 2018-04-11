@@ -31,11 +31,13 @@ end
 end
 
 @user_count = User.all.count
+@occasions = ["Family friendly", "Fast food", "Food trucks", "Pop-ups", "First date", "cheap n easy", "Birthday dinner", "Cheap eats", "Fancy schmancy", "Fine dining", "Romantic", "Best of 2018", "Personal favourites", "The Classics!"]
 
 (@user_count * 3).times do
   List.create(
     user_id: rand(1..@user_count),
-    status: "current"
+    status: "current",
+    title: @occasions.sample
   )
 end
 
