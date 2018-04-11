@@ -2,7 +2,5 @@
 
 <strong>Type of cuisine:</strong> <%= @restaurant.cuisine %><br>
 <strong>Location:</strong> <%= @restaurant.location %><br>
-<strong>Dishes:</strong>
-<% @restaurant.dishes.each do |dish| %>
-  <li><%= dish.name %></li>
-<% end %>
+
+<strong><%= link_to "View dishes", restaurant_dishes_path(@restaurant) %></strong>

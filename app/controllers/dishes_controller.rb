@@ -3,6 +3,11 @@ require 'pry'
 class DishesController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
+  def index
+  @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+  @dishes = @restaurant.dishes
+  end
+
   def new
     @dish = Dish.new
     @restaurants = Restaurant.all
