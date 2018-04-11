@@ -1,6 +1,6 @@
-<h1>List by <%= @list.user.email %></h1>
+<h1><%= @list.title %> List</h1>
+<h3><%= @list.user.name %></h3>
 
-<% @list.list_items.each do |list_item| %><br>
-  <strong>Restaurant:</strong> <%= link_to list_item.dish.restaurant.name, restaurant_path(list_item.dish.restaurant) %><br>
-  <strong>Dish:</strong> <%= list_item.dish.name %><br>
+<% @list.list_items.each_with_index do |list_item, i| %><br>
+  <strong><%= i + 1 %>. </strong> <%= list_item.dish.name %> - <%= link_to list_item.dish.restaurant.name, restaurant_path(list_item.dish.restaurant) %><br>
 <% end %>

@@ -2,5 +2,5 @@
 
 <% @lists.each do |list| %>
   <h3><%= link_to list.title, list_path(list) %></h3>
-  <p>List by <%= list.user.email %></p>
+  <p>List by <%= list.user.name %></p>
 <% end %>
