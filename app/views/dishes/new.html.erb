@@ -1,0 +1,19 @@
+<h1>Add a new Dish</h1>
+
+<%= form_for @dish do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <h3>Where can I try this dish?</h3>
+  <p>Select existing restaurant:</p>
+
+
+  <p>Or create a new restaurant:</p>
+  <%= fields_for :restaurant, @restaurant do |restaurant_fields| %>
+    Name: <%= restaurant_fields.text_field :name %><br>
+    Cuisine: <%= restaurant_fields.text_field :cuisine %><br>
+    Location: <%= restaurant_fields.text_field :location %><br><br>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

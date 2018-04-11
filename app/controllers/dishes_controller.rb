@@ -5,6 +5,7 @@ class DishesController < ApplicationController
 
   def new
     @dish = Dish.new
+    @restaurants = Restaurant.all
   end
 
   def create
@@ -22,4 +23,5 @@ class DishesController < ApplicationController
       flash[:error] = "You must be logged in to access that page"
       redirect_to new_user_registration_path
     end
+  end
 end
