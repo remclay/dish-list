@@ -1,4 +1,4 @@
-<h1>Your list</h1>
+<h1>List</h1>
 
 <% @list.list_items.each do |list_item| %>
   <%= render partial: "dishes/dish_link", locals: {dish: list_item.dish}%>
@@ -6,5 +6,5 @@
 
 <br>
 <%= link_to "Create a new dish", new_dish_path %>
-<%= button_to "Browse lists", new_dish_path %>
+<%= button_to "Browse lists", lists_path %>
 <%= button_to "Most popular dishes", new_dish_path %>
