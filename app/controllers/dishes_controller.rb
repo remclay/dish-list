@@ -31,11 +31,6 @@ class DishesController < ApplicationController
     @dish = Dish.find_by(id: params[:id])
   end
 
-  def assign_to_list
-    ListItem.add_to_list
-    # Move and abstract away. Add conditional logic if !list_item.save
-  end
-
   private
   def dish_params
     params.require(:dish).permit(:name, :restaurant_id, restaurant_attributes: [:name, :cuisine, :location])

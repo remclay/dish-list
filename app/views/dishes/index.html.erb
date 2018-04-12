@@ -1,8 +1,7 @@
 <h1>Dishes</h1>
 
 <% @dishes.each do |dish| %>
-  <h4><%= dish.name %></h4>
-  <p><%= dish.restaurant.name %> - <%= dish.restaurant.location %></p>
+  <%= render partial: "dish_link", locals: {dish: dish} %>
 <% end %>
 
 <br>

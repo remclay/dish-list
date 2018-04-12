@@ -3,4 +3,9 @@ class List < ApplicationRecord
   has_many :list_items
   has_many :dishes, through: :list_items
   validates_presence_of :title
+
+  def add_item(dish_id)
+    self.list_items.build(dish_id: dish_id)
+    #create?
+  end
 end
