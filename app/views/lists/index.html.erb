@@ -5,3 +5,5 @@
 <% @lists.each do |list| %>
     <p><%= link_to list.user.email, list_path(list) %></p>
 <% end %>
+
+<%= link_to "View my list", list_path(session[:user_id]) %>

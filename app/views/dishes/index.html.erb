@@ -1,5 +1,6 @@
 <h1>Dishes</h1>
 <%= button_to "Create a new dish", new_dish_path %>
+<%= link_to "View my dishes", list_path(session[:user_id]) %>
 
 <% @dishes.each do |dish| %>
   <%= render partial: "dish_link", locals: {dish: dish} %>
