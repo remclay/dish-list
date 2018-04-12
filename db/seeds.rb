@@ -28,7 +28,8 @@ end
 (@restaurant_count * 2).times do
   Dish.create(
     name: Faker::Food.dish,
-    restaurant_id: rand(1..@restaurant_count)
+    restaurant_id: rand(1..@restaurant_count),
+    popularity: rand(0..10)
   )
 end
 
