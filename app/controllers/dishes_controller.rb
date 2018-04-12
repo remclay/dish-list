@@ -4,8 +4,7 @@ class DishesController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
-  @restaurant = Restaurant.find_by(id: params[:restaurant_id])
-  @dishes = @restaurant.dishes
+    @dishes = Dish.all
   end
 
   def new
@@ -33,8 +32,7 @@ class DishesController < ApplicationController
   end
 
   def assign_to_list
-    @list = current_user.lists.find_by(id: params[:dish][:list_ids])
-    list_item = @list.list_items.create(dish_id: @dish.id)
+    ListItem.add_to_list
     # Move and abstract away. Add conditional logic if !list_item.save
   end
 

@@ -4,7 +4,11 @@ class ListsController < ApplicationController
   before_action :require_login, only: [:show]
 
   def index
-    @lists = List.all
+    # if current_user
+    #   @lists = current_user.lists
+    # else
+      @lists = List.all
+    # end
   end
 
   def show

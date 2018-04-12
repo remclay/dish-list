@@ -1,8 +1,9 @@
-<h1>Dishes at <%= @restaurant.name %></h1>
+<h1>Dishes</h1>
 
 <% @dishes.each do |dish| %>
-  <li><%= dish.name %></li>
+  <h4><%= dish.name %></h4>
+  <p><%= dish.restaurant.name %> - <%= dish.restaurant.location %></p>
 <% end %>
 
 <br>
-<%= link_to "Add new dish", new_restaurant_dish_path(@restaurant) %>
+<%= link_to "Add new dish", new_dish_path %>

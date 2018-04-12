@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   #resources :list_items
-  resources :lists
+  resources :lists, only: [:show, :index]
+  # get '/lists/all', to: "lists#all_lists"
   resources :dishes, except: [:edit, :update, :destroy]
 
   resources :restaurants, except: [:edit, :update, :destroy] do
@@ -10,6 +11,10 @@ Rails.application.routes.draw do
   # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  resource :users, only: [:show] do
+    resources :lists
+  end
 
   root to: 'welcome#index'
 end
