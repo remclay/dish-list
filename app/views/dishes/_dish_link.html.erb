@@ -1,6 +1,6 @@
  <p><strong><%= dish.name %></strong> | <%= dish.restaurant.name %> | <%= dish.restaurant.location %>
 
-<% if user_has(dish) %>
+<% if included_in_list(dish) %>
   <%= button_to 'Remove Dish', list_item_path(dish_id: dish.id), :method => :delete %>
 <% else %>
   <%= button_to 'Add Dish', list_items_path(dish_id: dish) %>
