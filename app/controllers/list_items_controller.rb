@@ -9,4 +9,10 @@ class ListItemsController < ApplicationController
       redirect_to dishes_path, alert: "Unable to add dish to list"
     end
   end
+
+  def destroy
+    ListItem.find_by(id: params[:dish_id]).destroy
+    redirect_to list_path, alert: "Dish removed"
+    #Still working on - not removing from list (view)
+  end
 end

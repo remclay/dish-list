@@ -11,15 +11,12 @@ class DishesController < ApplicationController
     @dish = Dish.new
     @restaurants = Restaurant.all
     @restaurant = Restaurant.new
-    @lists = current_user.lists
   end
 
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
-      if params[:dish][:list_ids]
-        assign_to_list
-      end
+      List.add_item(@dish.id)
       redirect_to dish_path(@dish), alert: "Dish successfully created"
     else
       flash[:alert] = @dish.errors.full_messages.first
