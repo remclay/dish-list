@@ -16,7 +16,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
-      List.add_item(@dish.id)
+      current_user.list.add_item(@dish.id)
       redirect_to dish_path(@dish), alert: "Dish successfully created"
     else
       flash[:alert] = @dish.errors.full_messages.first
@@ -34,7 +34,7 @@ class DishesController < ApplicationController
   end
 
   def require_login
-    unless user_signed_in?
+    unless logged_in?
       flash[:error] = "You must be logged in to access that page"
       redirect_to new_user_registration_path
     end
