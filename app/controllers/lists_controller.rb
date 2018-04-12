@@ -23,7 +23,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.user_id = current_user.id
     if @list.save
-      redirect_to list_path(@list), alert: "New list successfully created"
+      redirect_to user_dishes_path, alert: "New list successfully created"
     else
       flash[:alert] = @list.errors.full_messages.first
       redirect_to new_list_path
