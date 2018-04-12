@@ -38,6 +38,7 @@ end
 (@dish_count * 2).times do
   ListItem.create(
     list_id: rand(1..@list_count),
-    dish_id: rand(1..@dish_count)
+    dish_id: rand(1..@dish_count),
+    status: [true, false].sample
   )
 end
