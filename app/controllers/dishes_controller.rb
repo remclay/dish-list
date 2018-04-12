@@ -36,6 +36,10 @@ class DishesController < ApplicationController
     current_user.list.list_items.build
   end
 
+  def popular
+    puts "WOOOO"
+  end
+
   private
   def dish_params
     params.require(:dish).permit(:name, :restaurant_id, restaurant_attributes: [:name, :cuisine, :location])

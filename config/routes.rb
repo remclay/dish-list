@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     resources :dishes, only: [:show, :index, :new, :create]
   end
 
-  root to: 'welcome#index'
+  root 'welcome#index'
+  get '/welcome' => 'welcome#home'
+
+  get '/must-trys' => 'dishes#popular'
+  
 end
