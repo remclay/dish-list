@@ -1,0 +1,8 @@
+<h1>Sign up to Dish-List!</h1>
+
+<%= form_for @user do |f| %>
+  Email: <%= f.text_field :email %><br>
+  Password: <%= f.password_field :password %><br>
+  Confirm password: <%= f.password_field :password_confirmation %><br>
+  <%= f.submit "Sign up" %>
+<% end %>
