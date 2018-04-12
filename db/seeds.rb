@@ -10,7 +10,7 @@
   @user = User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length = 6, max_length = 12),
-    name: Faker::Name.name
+    # name: Faker::Name.name
   )
   List.create(user_id: @user.id)
 end
