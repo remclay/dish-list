@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :list_items, only: [:create]
+  resources :list_items, only: [:create, :destroy]
   resources :lists, only: [:show, :index]
   # get '/lists/all', to: "lists#all_lists"
   resources :dishes, except: [:edit, :update, :destroy]

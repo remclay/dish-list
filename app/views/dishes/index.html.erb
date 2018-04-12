@@ -1,8 +1,6 @@
 <h1>Dishes</h1>
+<%= button_to "Create a new dish", new_dish_path %>
 
 <% @dishes.each do |dish| %>
   <%= render partial: "dish_link", locals: {dish: dish} %>
 <% end %>
-
-<br>
-<%= link_to "Add new dish", new_dish_path %>

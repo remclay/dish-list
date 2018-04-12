@@ -1,16 +1,7 @@
-<h1>Lists</h1>
+<h1>Dish-Lists</h1>
 
-<% if !user_signed_in? %>
-  <p>Sign in to view full lists and authors</p>
-<% else %>
-  <p>Click on a list to view details</p>
-<% end %>
+<p>Click on a user to view their dish-list</p>
 
 <% @lists.each do |list| %>
-  <% if user_signed_in? %>
-    <h3><%= link_to list.title, list_path(list) %></h3>
-    <p>List by <%= list.user.name %></p>
-  <% else %>
-    <h3><%= list.title %></h3>
-  <% end %>
+    <p><%= link_to list.user.name, list_path(list) %></p>
 <% end %>

@@ -1,12 +1,12 @@
 class ListItemsController < ApplicationController
 
   def create
-    # binding.pry
-    if params[:list_id]
-      target_list = current_user.list(params[:list_id])
-      list_item = current_user.target_list.add_item
+    @list = current_user.list || current_user.create_list
+    @list_item = @list.list_items.new(dish_id: params[:dish_id])
+    if @list_item.save
+      redirect_to list_path(@list), alert: "Dish added to list!"
     else
-      current_user.lists.first.add_item(params[:item_id])
+      redirect_to dishes_path, alert: "Unable to add dish to list"
     end
   end
 end
