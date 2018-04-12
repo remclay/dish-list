@@ -6,15 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@list_titles = ["Family friendly", "Fast food", "Food trucks", "Pop-ups", "First date", "cheap n easy", "Birthday dinner", "Cheap eats", "Fancy schmancy", "Fine dining", "Romantic", "Best of 2018", "Personal favourites", "The Classics!"]
-
 5.times do
   @user = User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length = 6, max_length = 12),
     name: Faker::Name.name
   )
-  List.create(user_id: @user.id, title: @list_titles.sample)
+  List.create(user_id: @user.id)
 end
 
 10.times do
