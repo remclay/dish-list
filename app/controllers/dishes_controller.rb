@@ -4,7 +4,11 @@ class DishesController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
-    @dishes = Dish.all
+    if params[:user_id]
+      @dishes = current_user.list.dishes
+    else
+      @dishes = Dish.all
+    end
   end
 
   def new
@@ -16,16 +20,20 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
-      current_user.list.add_item(@dish.id)
-      redirect_to dish_path(@dish), alert: "Dish successfully created"
+      add_to_list
+      redirect_to user_dishes_path(current_user), alert: "Dish successfully created and added to your list"
     else
       flash[:alert] = @dish.errors.full_messages.first
-      redirect_to new_dish_path
+      redirect_to new_user_dish_path(current_user)
     end
   end
 
   def show
     @dish = Dish.find_by(id: params[:id])
+  end
+
+  def add_to_list
+    current_user.list.list_items.build
   end
 
   private
