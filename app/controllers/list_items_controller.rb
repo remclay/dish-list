@@ -11,8 +11,8 @@ class ListItemsController < ApplicationController
   end
 
   def destroy
-    ListItem.find_by(id: params[:dish_id]).destroy
+    items = current_user.list.list_items
+    items.find_by(dish_id: params[:dish_id]).destroy
     redirect_to list_path, alert: "Dish removed"
-    #Still working on - not removing from list (view)
   end
 end
