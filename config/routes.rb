@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :users
+  resources :users do
+    resources :dishes, only: [:show, :index, :new, :create, :edit, :destroy]
+  end
   # resources :sessions, only: [:new, :create, :destroy]
 
   get '/login' => 'sessions#new'
@@ -11,9 +13,9 @@ Rails.application.routes.draw do
   resources :lists, only: [:show, :index]
   # get '/lists/all', to: "lists#all_lists"
 
-  resources :dishes, except: [:edit, :update, :destroy]
+  resources :dishes, except: [:new, :edit, :update, :destroy]
 
-  resources :restaurants, except: [:edit, :update, :destroy] do
+  resources :restaurants, except: [:new, :edit, :update, :destroy] do
     resources :dishes, only: [:show, :index, :new, :create]
   end
 
