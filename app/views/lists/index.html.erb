@@ -3,5 +3,5 @@
 <p>Click on a user to view their dish-list</p>
 
 <% @lists.each do |list| %>
-    <p><%= link_to list.user.name, list_path(list) %></p>
+    <p><%= link_to list.user.email, list_path(list) %></p>
 <% end %>
