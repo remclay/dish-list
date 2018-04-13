@@ -3,5 +3,8 @@
 <% @dishes.each do |dish| %>
   <%= render partial: "dish_link", locals: {dish: dish} %>
   <%= render partial: "add_remove_link", locals: {dish: dish} %>
-  <%= render partial: "status_display", locals: {dish: dish} %>
+  
+  <% if params[:user_id] %>
+    <%= render partial: "status_display", locals: {dish: dish} %>
+  <% end %>
 <% end %>
