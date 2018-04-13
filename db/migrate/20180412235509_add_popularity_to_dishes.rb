@@ -1,5 +1,5 @@
 class AddPopularityToDishes < ActiveRecord::Migration[5.1]
   def change
-    add_column :dishes, :popularity, :integer
+    add_column :dishes, :popularity, :integer, :default => 0
   end
 end

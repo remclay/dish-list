@@ -4,4 +4,9 @@ class Dish < ApplicationRecord
   has_many :lists, through: :list_items
   accepts_nested_attributes_for :restaurant, reject_if: proc { |attributes| attributes[:name].blank? }
   validates_presence_of :name
+
+  def increase_popularity
+    self.popularity += 1
+    self.save
+  end
 end
