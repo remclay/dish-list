@@ -35,6 +35,7 @@ class DishesController < ApplicationController
   def add_dish_to_list
     @list = current_user.list
     @list.add_item(@dish.id)
+    #No validation here yet
   end
 
   def popular
@@ -48,7 +49,7 @@ class DishesController < ApplicationController
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access that page"
-      redirect_to new_user_registration_path
+      redirect_to new_user_path
     end
   end
 end
