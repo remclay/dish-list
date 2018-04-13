@@ -1,9 +1,7 @@
 <h1>Dish-Lists</h1>
 
-<p>Click on a user to view their dish-list</p>
+<p>Click on a user to view their Dish-List</p>
 
 <% @lists.each do |list| %>
     <p><%= link_to list.user.email, list_path(list) %></p>
 <% end %>
-
-<%= link_to "View my list", list_path(session[:user_id]) %>
