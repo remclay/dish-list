@@ -1,0 +1,6 @@
+<h1>Top 10 Most Popular Dishes</h1>
+
+<% @dishes.each do |dish| %>
+  <%= render partial: "dish_link", locals: {dish: dish} %><br>
+  Added to <%= dish.popularity %> Dish-Lists<br>
+<% end %>

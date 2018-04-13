@@ -9,4 +9,8 @@ class Dish < ApplicationRecord
     self.popularity += 1
     self.save
   end
+
+  def self.most_popular
+    Dish.order(popularity: :desc).first(10)
+  end
 end

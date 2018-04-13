@@ -39,6 +39,7 @@ class DishesController < ApplicationController
   end
 
   def popular
+    @dishes = Dish.most_popular
   end
 
   private
