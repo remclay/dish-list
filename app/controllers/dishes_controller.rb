@@ -20,7 +20,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
-      add_to_list
+      add_dish_to_list
       redirect_to user_dishes_path(current_user), alert: "Dish successfully created and added to your list"
     else
       flash[:alert] = @dish.errors.full_messages.first
@@ -32,12 +32,12 @@ class DishesController < ApplicationController
     @dish = Dish.find_by(id: params[:id])
   end
 
-  def add_to_list
-    current_user.list.list_items.build
+  def add_dish_to_list
+    @list = current_user.list
+    @list.add_item(@dish.id)
   end
 
   def popular
-    puts "WOOOO"
   end
 
   private

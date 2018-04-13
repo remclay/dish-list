@@ -1,7 +1,7 @@
 class ListItemsController < ApplicationController
 
   def create
-    @list = current_user.list || current_user.create_list
+    @list = current_user.list
     @list_item = @list.list_items.new(dish_id: params[:dish_id])
     if @list_item.save
       redirect_to list_path(@list), alert: "Dish added to list!"
