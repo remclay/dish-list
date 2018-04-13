@@ -1,1 +1,1 @@
- <p><strong><%= dish.name %></strong> | <%= dish.restaurant.name %> | <%= dish.restaurant.location %>
+ <p><strong><%= link_to dish.name, dish_path(dish) %></strong> | <%= dish.restaurant.name %> | <%= dish.restaurant.location %>
