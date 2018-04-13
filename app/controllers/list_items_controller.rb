@@ -4,10 +4,15 @@ class ListItemsController < ApplicationController
     @list = current_user.list
     @list_item = @list.list_items.new(dish_id: params[:dish_id])
     if @list_item.save
-      redirect_to list_path(@list), alert: "Dish added to list!"
+      increase_dish_popularity
+      redirect_to user_dishes_path(current_user), alert: "Dish successfully added to your list"
     else
-      redirect_to dishes_path, alert: "Unable to add dish to list"
+      redirect_to user_dishes_path(current_user), alert: "Unable to add dish to list"
     end
+  end
+
+  def increase_dish_popularity
+    @list_item.dish.increase_popularity
   end
 
   def destroy
