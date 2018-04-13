@@ -3,10 +3,3 @@
 <% @list.list_items.each do |list_item| %>
   <%= render partial: "dishes/dish_link", locals: {dish: list_item.dish}%>
 <% end %>
-
-<br>
-
-
-<%= link_to "Create a new dish", new_dish_path %><br>
-<%= link_to "Browse lists", lists_path %><br>
-<%= link_to "View most popular dishes", new_dish_path %>

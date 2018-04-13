@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180412235509) do
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "popularity"
+    t.integer "popularity", default: 0
   end
 
   create_table "list_items", force: :cascade do |t|
