@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     resources :dishes, only: [:show, :index, :new, :create, :edit, :destroy] do
       post '/tasted' => 'list_items#tasted'
     end
-
   end
   # resources :sessions, only: [:new, :create, :destroy]
 
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
   resources :dishes, except: [:new, :edit, :update, :destroy]
 
   resources :restaurants, except: [:new, :edit, :update, :destroy] do
-    resources :dishes, only: [:show, :index, :new, :create]
+    # resources :dishes, only: [:show, :index, :new, :create]
   end
 
   root 'welcome#index'

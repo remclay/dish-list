@@ -3,4 +3,7 @@
 <strong>Type of cuisine:</strong> <%= @restaurant.cuisine %><br>
 <strong>Location:</strong> <%= @restaurant.location %><br>
 
-<strong><%= link_to "View dishes", restaurant_dishes_path(@restaurant) %></strong>
+<strong>Wish-dishes:</strong>
+<% @restaurant.dishes.each do |dish| %>
+    <li><%= dish.name %> | on <%= pluralize(dish.popularity, "Dish-List") %></li>
+<% end %><br>
