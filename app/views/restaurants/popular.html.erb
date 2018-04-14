@@ -1,10 +1,2 @@
 <h1>Viewing Restaurants with most popular dishes</h1>
-
-<% @restaurants.each do |restaurant| %>
-  <div>
-    <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
-    <%= pluralize(restaurant.dishes.count, "Dish-List dish") %><br>
-    <strong>Type of cuisine:</strong> <%= restaurant.cuisine %><br>
-    <strong>Location:</strong> <%= restaurant.location %>
-  </div>
-<% end %>
+<%= render partial: "restaurant", collection: @restaurants %>
