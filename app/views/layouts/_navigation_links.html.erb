@@ -1,7 +1,7 @@
 <% if session[:user_id] %>
 
   <% unless current_page?(user_dishes_path(session[:user_id])) %>
-    <%= link_to "View your Dish-List", user_dishes_path(session[:user_id]) %> |
+  | <%= link_to "View your Dish-List", user_dishes_path(session[:user_id]) %> |
   <% end %>
 
   <% unless current_page?(new_user_dish_path(session[:user_id])) %>
@@ -20,12 +20,12 @@
     <%= link_to "View all dishes", dishes_path %> |
   <% end %>
 
-  <% unless current_page?(most_popular_restaurants_path) %> |
+  <% unless current_page?(most_popular_restaurants_path) %>
     <%= link_to "View restaurants with most popular dishes", most_popular_restaurants_path %>
-  <% end %>
+  <% end %> |
 
   <% unless current_page?(restaurants_path) %>
-    <%= link_to "View all restaurants", restaurants_path %>
+    <%= link_to "View all restaurants", restaurants_path %> |
   <% end %>
 
 <% end %>
