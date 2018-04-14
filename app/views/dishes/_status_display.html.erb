@@ -1,5 +1,5 @@
 <% if tried_dish(dish) %>
   Tasted
 <% else %>
-  <%= button_to 'Mark as Tasted', user_dish_tasted_path(dish_id: dish), :method => :post, params: {dish_id: dish.id} %>
+  <%= button_to "Mark as Tasted", user_dish_tasted_path(dish_id: dish), :method => :post, params: {dish_id: dish.id} %>
 <% end %>
