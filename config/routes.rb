@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/welcome' => 'welcome#home'
 
-  get '/must-trys' => 'dishes#popular'
+  get '/most_popular' => 'dishes#popular'
+  get '/most_popular/restaurants' => 'restaurants#popular'
 
 end

@@ -12,16 +12,16 @@
     <%= link_to "View all Dish-Lists", lists_path %> |
   <% end %>
 
-  <% unless current_page?(must_trys_path) %>
-    <%= link_to "View most popular dishes", must_trys_path %> |
+  <% unless current_page?(most_popular_path) %>
+    <%= link_to "View most popular dishes", most_popular_path %> |
   <% end %>
 
-  <% unless current_page?(restaurants_path) %>
+  <% unless current_page?(dishes_path) %>
     <%= link_to "View all dishes", dishes_path %> |
   <% end %>
 
-  <% unless current_page?(restaurants_path) %>
-    <%= link_to "View restaurants with must-try dishes", restaurants_path %>
+  <% unless current_page?(most_popular_restaurants_path) %>
+    <%= link_to "View restaurants with most popular dishes", most_popular_restaurants_path %>
   <% end %>
 
 <% end %>
