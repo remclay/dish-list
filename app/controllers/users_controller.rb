@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = current_user
+    @user = User.find_by(id: params[:id])
   end
 
   def new
@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     else
       render 'users/new' #redirect_to new_user_path #'signup'
     end
+  end
+
+  def update
+    @user = current_user
   end
 
   private

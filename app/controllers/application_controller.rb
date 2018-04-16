@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
 
   def current_user
-    @user = (User.find_by(id: session[:user_id]) || User.new)
+    @user = User.find_by(id: session[:user_id])
   end
 
   def logged_in?
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
   end
-  
+
   # def after_sign_in_path_for(resource)
   #   request.env['omniauth.origin'] || root_path
   # end
