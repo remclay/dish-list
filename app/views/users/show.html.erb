@@ -1,0 +1,5 @@
+<h1><%= @user.email %></h1>
+
+<p><%= @user.created_at.strftime("Dish-List Member since %B %Y")  %></p>
+<%= link_to "View their Dish-List", user_dishes_path(@user) %>
+<br><br>
