@@ -4,19 +4,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email])
-    if @user
-      if @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect_to welcome_path, alert: "Welcome back"
+    # Log in with OmniAuth path
+    if auth_hash = request.env['omniauth.auth']
+      user = User.find_or_create_by_omniauth(auth_hash)
+      session[:user_id] = user.id
+      redirect_to welcome_path
+    else # Regular log in path
+      @user = User.find_by(email: params[:email])
+      if @user
+        if @user.authenticate(params[:password])
+          session[:user_id] = @user.id
+          redirect_to welcome_path, alert: "Welcome back"
+        else
+          #refactor this away
+          flash[:notice] = "Invalid password"
+          render 'sessions/new'
+        end
       else
-        #refactor this away
-        flash[:notice] = "Invalid password"
+        flash[:notice] = "Incorrect email"
         render 'sessions/new'
       end
-    else
-      flash[:notice] = "Incorrect email"
-      render 'sessions/new'
     end
   end
 
