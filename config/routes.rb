@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
+  get '/auth/facebook/callback' => 'sessions#create'
+
+  get "/auth/github/callback" => 'sessions#create'
+
   # post '/users/:user_id/dishes/:id' => 'dish#update_status'
 
   resources :list_items, only: [:create, :destroy]
