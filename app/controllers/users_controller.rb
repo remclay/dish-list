@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, alert: "Sign up successful" #your_list?
     else
-      render 'users/new' #redirect_to new_user_path #'signup'
+      render 'users/new'
     end
   end
 
@@ -25,22 +25,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: session[:user_id])
-    if @user && @user.id == params[:id].to_i
-      # if @user.update(user_params)
-      #   redirect_to user_path(@user), alert: "Your details have been successfully updated"
-      if params[:user][:email] != ""
-        @user.email = params[:user][:email]
-      end
-      if params[:user][:password] != "" && (params[:user][:password] == params[:user][:password_confirmation])
-        @user.password = params[:user][:password]
-      end
-    else
-      redirect_to edit_user_path(@user)
-    end
-    else
-      redirect_to user_path(@user)
-    end
+    # @user = User.find_by(id: session[:user_id])
+    # if @user && @user.id == params[:id].to_i
+    #   # if @user.update(user_params)
+    #   #   redirect_to user_path(@user), alert: "Your details have been successfully updated"
+    #   if params[:user][:email] != ""
+    #     @user.email = params[:user][:email]
+    #   end
+    #   if params[:user][:password] != "" && (params[:user][:password] == params[:user][:password_confirmation])
+    #     @user.password = params[:user][:password]
+    #   end
+    # else
+    #   redirect_to edit_user_path(@user)
+    # end
+    # else
+    #   redirect_to user_path(@user)
+    # end
   end
 
   private

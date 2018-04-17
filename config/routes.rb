@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # resources :sessions, only: [:new, :create, :destroy]
 
   get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  post '/sessions' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
   # post '/users/:user_id/dishes/:id' => 'dish#update_status'

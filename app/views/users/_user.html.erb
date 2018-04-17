@@ -1,5 +1,5 @@
 <%= form_for @user do |f| %>
-  Email: <%= f.text_field :email %><br>
+  Email: <%= f.text_field :email, :class => "tbc", :placeholder => "Enter your email" %> <br>
   Password: <%= f.password_field :password %><br>
   Confirm password: <%= f.password_field :password_confirmation %><br>
   <%= f.submit %>
