@@ -1,6 +1,6 @@
 <h1>List</h1>
 
 <% @list.list_items.each do |list_item| %>
-  <%= render partial: "dishes/dish_link", locals: {dish: list_item.dish}%>
+  <%= render partial: "dishes/dish", locals: {dish: list_item.dish}%>
   <%= render partial: "dishes/add_remove_link", locals: {dish: list_item.dish}%>
 <% end %>
