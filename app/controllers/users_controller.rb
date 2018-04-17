@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       @user.list = List.new
       @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, alert: "Sign up successful" #your_list?
+      redirect_to welcome_path, alert: "Sign up successful"
     else
       render 'users/new'
     end

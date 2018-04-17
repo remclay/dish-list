@@ -1,4 +1,5 @@
 class ListItemsController < ApplicationController
+  before_action :authentication_required, only: [:create]
 
   def create
     @list = current_user.list

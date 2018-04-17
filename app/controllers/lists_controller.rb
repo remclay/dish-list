@@ -1,7 +1,7 @@
 require 'pry'
 
 class ListsController < ApplicationController
-  before_action :require_login, only: [:show]
+  before_action :authentication_required, only: [:show]
 
   def index
     # if current_user

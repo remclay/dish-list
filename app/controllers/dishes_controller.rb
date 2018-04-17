@@ -1,7 +1,7 @@
 require 'pry'
 
 class DishesController < ApplicationController
-  before_action :require_login, only: [:new, :create]
+  before_action :authentication_required, only: [:new, :create]
 
   def index
     if params[:user_id]

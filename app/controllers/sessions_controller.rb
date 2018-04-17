@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user
       if @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect_to root_path, alert: "Welcome back"
+        redirect_to welcome_path, alert: "Welcome back"
       else
         #refactor this away
         flash[:notice] = "Invalid password"
