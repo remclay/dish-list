@@ -20,8 +20,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by(id: session[:user_id])
+  end
+
   def update
-    @user = current_user
+    @user = User.find_by(id: session[:user_id])
+    if @user && @user.id == params[:id].to_i
+      # if @user.update(user_params)
+      #   redirect_to user_path(@user), alert: "Your details have been successfully updated"
+      if params[:user][:email] != ""
+        @user.email = params[:user][:email]
+      end
+      if params[:user][:password] != "" && (params[:user][:password] == params[:user][:password_confirmation])
+        @user.password = params[:user][:password]
+      end
+    else
+      redirect_to edit_user_path(@user)
+    end
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   private
