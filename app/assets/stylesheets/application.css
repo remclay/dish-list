@@ -13,3 +13,63 @@
  *= require_tree .
  *= require_self
  */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  grid-template-rows: ;
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: center;
+  grid-template-areas:
+      "header header header"
+      "sidebar content content"
+      "sidebar content content"
+      "footer footer footer"
+}
+
+.footer {
+  grid-area: footer;
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-template-areas:
+    "header header header"
+    "content content content"
+    "sidebar sidebar sidebar"
+    "footer footer footer"
+  }
+}
+
+.header {
+  grid-column: header-start / header-end;
+}
+
+.navigation_links {
+  grid-area: footer;
+}
+
+h1 {
+  grid-area: content;
+}
+
+/* .item3 {
+  grid-column: content-start / content-end; will span entire content section
+} */
+
+/* .one-div {
+  grid-column: span 2;
+  grid-row: span 2;
+  grid-column: 1 / 5;
+  grid-column: 1 / -1; 100%
+  grid-row: 1 / 2;
+  grid-column: span 4 / 9; always end at nine and span 4
+} */
+
+/*
+.item {
+  display: drid;
+  justify-content: center;
+  align-items: center;
+} */

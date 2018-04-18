@@ -9,16 +9,18 @@
   </head>
 
   <body>
+    <div class="container">
 
-    <%= render partial: "layouts/header" %>
+      <%= render partial: "layouts/header" %>
 
-    <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-    <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-    <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-    <%= content_tag(:div, flash[:message], :id => "flash_alert") if flash[:message] %>
+      <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+      <%= content_tag(:div, flash[:message], :id => "flash_alert") if flash[:message] %>
 
-    <%= yield %>
+      <%= yield %>
+
+      <footer><%= render partial: "layouts/navigation_links" %></footer>
+    </div>
   </body>
-
-  <footer><%= render partial: "layouts/navigation_links" %></footer>
 </html>
