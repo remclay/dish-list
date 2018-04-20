@@ -7,5 +7,6 @@ class WelcomeController < ApplicationController
   end
 
   def home
+    # render layout: "welcome"
   end
 end
