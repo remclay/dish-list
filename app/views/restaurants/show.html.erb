@@ -1,11 +1,13 @@
 <div class="content">
   <h1><%= @restaurant.name %></h1>
+  <h3>at <%= @restaurant.location %></h3>
+  <br>
 
-  <strong>Type of cuisine:</strong> <%= @restaurant.cuisine %><br>
-  <strong>Location:</strong> <%= @restaurant.location %><br>
+  <strong>Type of cuisine:</strong> <%= @restaurant.cuisine %><br><br>
 
-  <strong>Wish-dishes:</strong>
+  <h3>Dish-List dishes:</h3>
+
   <% @restaurant.dishes.each do |dish| %>
-      <li><%= dish.name %> | on <%= pluralize(dish.popularity, "Dish-List") %></li>
+      <li><strong><%= dish.name %></strong> | on <%= pluralize(dish.popularity, "Dish-List") %></li><br>
   <% end %><br>
 </div>
