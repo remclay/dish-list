@@ -1,0 +1,10 @@
+<div class="profile_links">
+  <% if session[:user_id] %>
+    Signed in as <%= current_user.email %> |
+    <%= link_to 'Edit profile', edit_user_path(current_user)  %> |
+    <%= link_to 'Sign out', logout_path, method: :post %>
+  <% else %>
+    <%= link_to 'Sign in', login_path %> |
+    <%= link_to 'Sign up', new_user_path %>
+  <% end %>
+</div>

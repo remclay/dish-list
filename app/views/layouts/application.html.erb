@@ -10,17 +10,25 @@
 
   <body>
     <div class="container">
+      <div class="top">
+        <%= render partial: "layouts/header" %>
+        <%= render partial: "layouts/navigation_links" %>
+      </div>
 
-      <%= render partial: "layouts/header" %>
-
-      <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-      <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-      <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-      <%= content_tag(:div, flash[:message], :id => "flash_alert") if flash[:message] %>
+      <div class="field_with_errors">
+        <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+        <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+        <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+        <%= content_tag(:div, flash[:message], :id => "flash_alert") if flash[:message] %>
+      </div>
 
       <%= yield %>
 
-      <footer><%= render partial: "layouts/navigation_links" %></footer>
+      <div class="sidebar">
+        <%= render partial: "layouts/navigation_images" %>
+      </div>
+      
+      <footer><%= render partial: "layouts/profile_links" %></footer>
     </div>
   </body>
 </html>
