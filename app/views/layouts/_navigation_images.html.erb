@@ -46,3 +46,12 @@
     <a href="/restaurants">all restaurants</a>
   </div>
 </div>
+
+<% if current_page?(welcome_path) %>
+  <div class="item">
+    <img src="/assets/profile.jpg" alt="">
+    <div class="item_overlay">
+      <a href="/users/<%= current_user.id%>/edit">your profile</a>
+    </div>
+  </div>
+<% end %>
