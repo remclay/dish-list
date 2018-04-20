@@ -89,6 +89,19 @@
   text-align: center
 }
 
+footer {
+  grid-area: footer;
+  padding: 20px;
+  align-self: center;
+  justify-self: center;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+}
+
+/* img {
+  max-width: 100%
+} */
+
 @media (max-width: 700px) {
   .container {
     grid-template-columns: 1fr;
