@@ -2,6 +2,7 @@ require 'pry'
 
 class DishesController < ApplicationController
   before_action :authentication_required, only: [:new, :create]
+  layout 'default'
 
   def index
     if params[:user_id]
@@ -45,12 +46,5 @@ class DishesController < ApplicationController
   private
   def dish_params
     params.require(:dish).permit(:name, :restaurant_id, restaurant_attributes: [:name, :cuisine, :location])
-  end
-
-  def require_login
-    unless logged_in?
-      flash[:error] = "You must be logged in to access that page"
-      redirect_to new_user_path
-    end
   end
 end

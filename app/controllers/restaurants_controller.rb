@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :authentication_required
-  
+  layout 'default'
+
   def index
     @restaurants = Restaurant.all
   end
