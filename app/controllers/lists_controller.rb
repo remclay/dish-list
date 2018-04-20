@@ -1,42 +1,15 @@
-require 'pry'
-
 class ListsController < ApplicationController
   before_action :authentication_required, only: [:show]
 
   def index
-    # if current_user
-    #   @lists = current_user.lists
-    # else
-      @lists = List.all
-    # end
+    @lists = List.all
   end
 
   def show
     @list = List.find_by(id: params[:id])
   end
 
-  def new
-    @list = List.new
-  end
-
-  def create
-    @list = List.new(list_params)
-    @list.user_id = current_user.id
-    if @list.save
-      redirect_to user_dishes_path, alert: "New list successfully created"
-    else
-      flash[:alert] = @list.errors.full_messages.first
-      redirect_to new_list_path
-    end
-  end
-
   private
-  def require_login
-    unless logged_in?
-      flash[:error] = "You must be logged in to access that page"
-      redirect_to new_user_registration_path
-    end
-  end
 
   def list_params
     params.require(:list).permit(:user_id)
