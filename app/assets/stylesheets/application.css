@@ -37,8 +37,41 @@
      "footer footer footer"
 }
 
+.top {
+  /* padding: 5px; */
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15fr 1fr;
+  grid-template-areas:
+  "hero"
+  "nav"
+}
+
+.hero {
+  grid-area: hero;
+  color: white;
+  border-radius: 15px;
+  text-align: left;
+  text-justify: center;
+  letter-spacing: 3px;
+  line-height: 70%;
+  background-image: url(header.jpg);
+  background-size: cover;
+  background-position: bottom right;
+  display: grid;
+  align-content: end;
+  justify-content: start;
+  padding: 20px;
+  font: white;
+}
+
 .navigation_links {
   grid-area: nav;
+  align-self: center;
+  justify-self: center;
+  letter-spacing: 1.5px;
+  font-size: 12px;
 }
 
 
