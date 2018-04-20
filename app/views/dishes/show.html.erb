@@ -1,10 +1,11 @@
-<h1><%= @dish.name %> at <%= link_to @dish.restaurant.name, restaurant_path(@dish.restaurant) %></h1>
+<div class="content">
+  <h1><%= @dish.name %> at <%= link_to @dish.restaurant.name, restaurant_path(@dish.restaurant) %></h1>
 
+  <p>This dish has been added to <%= @dish.popularity %> Dish-Lists!</p>
 
-<p>This dish has been added to <%= @dish.popularity %> Dish-Lists!</p>
+  <h4>Type of cuisine: <%= @dish.restaurant.cuisine %></h4>
+  <h4>Location: <%= @dish.restaurant.location %></h4>
 
-<h4>Type of cuisine: <%= @dish.restaurant.cuisine %></h4>
-<h4>Location: <%= @dish.restaurant.location %></h4>
-
-<%= render partial: "add_remove_link", locals: {dish: @dish} %>
-<p>View lists that include this dish</p>
+  <%= render partial: "add_remove_link", locals: {dish: @dish} %>
+  <p>View lists that include this dish</p>
+</div>

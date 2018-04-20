@@ -1,10 +1,12 @@
-<h1>Dishes</h1>
+<div class="content">
+  <h1>Dishes</h1>
 
-<% @dishes.each do |dish| %>
-  <%= render partial: "dish", locals: {dish: dish} %>
-  <%= render partial: "add_remove_link", locals: {dish: dish} %>
+  <% @dishes.each do |dish| %>
+    <%= render partial: "dish", locals: {dish: dish} %>
+    <%= render partial: "add_remove_link", locals: {dish: dish} %>
 
-  <% if params[:user_id] %>
-    <%= render partial: "status_display", locals: {dish: dish} %>
+    <% if params[:user_id] %>
+      <%= render partial: "status_display", locals: {dish: dish} %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
