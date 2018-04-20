@@ -96,6 +96,10 @@
   font-weight: 400;
 }
 
+.content h3 a {
+  font-weight: 600;
+}
+
 footer {
   grid-area: footer;
   padding: 20px;
@@ -115,11 +119,11 @@ footer {
   /* background-color: #001a1a; */
   background-color: #00001a;
   border-radius: 15px;
-  padding: 15px;
+  padding: 10px;
   letter-spacing: 1.25px;
 
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
 }
 
