@@ -1,57 +1,60 @@
-<div class="item">
-  <img src="/assets/your-list.jpg" alt="">
-  <div class="item_overlay">
-    <a href="/users/<%= current_user.id%>/dishes"> your dish-list </a>
-  </div>
-</div>
+<% if session[:user_id] %>
 
-<div class="item">
-  <img src="/assets/add-new.jpg" alt="">
-  <div class="item_overlay">
-    <a href="/users/<%= current_user.id%>/dishes/new">create new dish</a>
-  </div>
-</div>
-
-<div class="item">
-  <img src="/assets/all-lists.jpg" alt="">
-  <div class="item_overlay">
-    <a href="/lists">all dish-lists</a>
-  </div>
-</div>
-
-<div class="item">
-  <img src="/assets/most-popular.jpg" alt="">
-  <div class="item_overlay">
-    <a href="/most_popular">most popular dishes</a>
-  </div>
-</div>
-
-<div class="item">
-  <img src="/assets/all-dishes.jpg" alt="">
-  <div class="item_overlay">
-    <a href="/dishes">view dishes</a>
-  </div>
-</div>
-
-<div class="item">
-  <img src="/assets/popular-restaurants.jpg" alt="">
-  <div class="item_overlay">
-    <a href="/most_popular/restaurants">most popular restaurants</a>
-  </div>
-</div>
-
-<div class="item">
-  <img src="/assets/all-restaurants.jpg" alt="">
-  <div class="item_overlay">
-    <a href="/restaurants">all restaurants</a>
-  </div>
-</div>
-
-<% if current_page?(welcome_path) %>
   <div class="item">
-    <img src="/assets/profile.jpg" alt="">
+    <img src="/assets/your-list.jpg" alt="">
     <div class="item_overlay">
-      <a href="/users/<%= current_user.id%>/edit">your profile</a>
+      <a href="/users/<%= current_user.id%>/dishes"> your dish-list </a>
     </div>
   </div>
+
+  <div class="item">
+    <img src="/assets/add-new.jpg" alt="">
+    <div class="item_overlay">
+      <a href="/users/<%= current_user.id%>/dishes/new">create new dish</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="/assets/all-lists.jpg" alt="">
+    <div class="item_overlay">
+      <a href="/lists">all dish-lists</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="/assets/most-popular.jpg" alt="">
+    <div class="item_overlay">
+      <a href="/most_popular">most popular dishes</a>
+    </div>
+</div>
+
+  <div class="item">
+    <img src="/assets/all-dishes.jpg" alt="">
+    <div class="item_overlay">
+      <a href="/dishes">view dishes</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="/assets/popular-restaurants.jpg" alt="">
+    <div class="item_overlay">
+      <a href="/most_popular/restaurants">most popular restaurants</a>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="/assets/all-restaurants.jpg" alt="">
+    <div class="item_overlay">
+      <a href="/restaurants">all restaurants</a>
+    </div>
+  </div>
+
+  <% if current_page?(welcome_path) %>
+    <div class="item">
+      <img src="/assets/profile.jpg" alt="">
+      <div class="item_overlay">
+        <a href="/users/<%= current_user.id%>/edit">your profile</a>
+      </div>
+    </div>
+  <% end %>
 <% end %>
