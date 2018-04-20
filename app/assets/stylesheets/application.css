@@ -86,7 +86,14 @@
 .content h1 {
   text-transform: uppercase;
   letter-spacing: 3px;
-  text-align: center
+  text-align: center;
+}
+
+.content h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: 400;
 }
 
 footer {
