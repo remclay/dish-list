@@ -1,5 +1,8 @@
 <div class="content">
-  <h1>Top 10 Most Popular Dishes</h1>
+  <h1>10 Most Popular Dishes</h1>
+
+  <h3>The dishes added to the most lists</h3>
+  <br>
 
   <% @dishes.each.with_index(1) do |dish, i| %>
     <p><strong><%= i %>. <%= dish.name %></strong> at <%= dish.restaurant.name %><br>

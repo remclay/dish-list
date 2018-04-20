@@ -1,11 +1,13 @@
 <div class="content">
   <h1>Add a new Dish</h1>
+  <h3>Straight to your Dish-List</h3>
+  <br>
 
   <%= form_for @dish do |f| %>
-    <%= f.label :name %>
+    <%= f.label :name, "Dish name:" %>
     <%= f.text_field :name %>
 
-    <h4>Where can I try this dish?</h4>
+    <h4>Where can you enjoy this dish?</h4>
     <p>Select existing restaurant:</p>
 
   <%= f.collection_select :restaurant_id, @restaurants, :id, :name, :include_blank => true %>
@@ -13,9 +15,9 @@
     <p>Or create a new restaurant:</p>
     <%= f.fields_for :restaurant, @restaurant do |restaurant_fields| %>
       <%= restaurant_fields.label :name %>
-      <%= restaurant_fields.text_field :name %><br>
+      <%= restaurant_fields.text_field :name %><br><br>
       <%= restaurant_fields.label :cuisine %>
-      <%= restaurant_fields.text_field :cuisine %><br>
+      <%= restaurant_fields.text_field :cuisine %><br><br>
       <%= restaurant_fields.label :location %>
       <%= restaurant_fields.text_field :location %><br><br>
     <% end %>
