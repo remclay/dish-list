@@ -14,12 +14,4 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
-
-  # def require_logged_in
-  #   return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
-  # end
-
-  # def after_sign_in_path_for(resource)
-  #   request.env['omniauth.origin'] || root_path
-  # end
 end
