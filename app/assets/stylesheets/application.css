@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
+/*
  body {
    font-size: 15px;
    font-family: Arial, Helvetica, sans-serif;
@@ -21,14 +21,12 @@
  }
 
  a {
-   /* color: rgb(23, 48, 30); */
    color: #00001a;
  }
 
 .container {
  display: grid;
  grid-template-columns: 1fr 1fr 1fr;
- /* grid-template-rows: 1fr 2fr 0.5fr; */
  grid-template-rows: 500px 1fr 30px;
  grid-gap: 5px;
  grid-template-areas:
@@ -38,7 +36,6 @@
 }
 
 .top {
-  /* padding: 5px; */
   grid-area: header;
   display: grid;
   grid-template-columns: 1fr;
@@ -109,14 +106,8 @@ footer {
   font-size: 12px;
 }
 
-/* img {
-  max-width: 100%
-} */
-
 .sidebar {
   grid-area: sidebar;
-  /* background-color: rgb(16, 40, 16); */
-  /* background-color: #001a1a; */
   background-color: #00001a;
   border-radius: 15px;
   padding: 10px;
@@ -180,4 +171,4 @@ footer {
   .sidebar {
   display: none;
   }
-}
+} */
