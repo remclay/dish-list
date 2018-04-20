@@ -74,6 +74,20 @@
   font-size: 12px;
 }
 
+.content {
+  grid-area: content;
+  border-radius: 15px;
+  padding: 30px;
+  letter-spacing: 1.25px;
+  background-color: rgb(211, 215, 223);
+  color: #00001a;
+}
+
+.content h1 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center
+}
 
 @media (max-width: 700px) {
   .container {
