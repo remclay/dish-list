@@ -7,7 +7,11 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find_by(id: params[:id])
+    if params[:id].to_i == current_user.id
+      redirect_to user_dishes_path(current_user)
+    else
+      @list = List.find_by(id: params[:id])
+    end
   end
 
   private
