@@ -1,7 +1,13 @@
 <div class="content">
   <h1>Restaurants</h1>
   <h3>Every Dish-List worthy restaurant</h3>
-  <br>
-  
-  <%= render @restaurants %>
+
+  <% if @restaurants.empty? %>
+    <%= render partial: "dishes/no_dishes" %>
+
+  <% else %>
+    <br>
+    <%= render @restaurants %>
+  <% end %>
+
 </div>
