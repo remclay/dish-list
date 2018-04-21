@@ -2,11 +2,17 @@
   <h1>10 Most Popular Dishes</h1>
 
   <h3>The dishes added to the most lists</h3>
-  <br>
 
-  <% @dishes.each.with_index(1) do |dish, i| %>
-    <p><strong><%= i %>. <%= dish.name %></strong> at <%= dish.restaurant.name %><br>
-    Added to <%= pluralize(dish.popularity, "Dish-List") %></li><br>
-    <%= render partial: "add_remove_link", locals: {dish: dish} %>
+  <% if @dishes.empty? %>
+    <%= render partial: "no_dishes" %>
+
+  <% else %>
+    <br>
+    <% @dishes.each.with_index(1) do |dish, i| %>
+      <p><strong><%= i %>. <%= dish.name %></strong> at <%= dish.restaurant.name %><br>
+      Added to <%= pluralize(dish.popularity, "Dish-List") %></li><br>
+      <%= render partial: "add_remove_link", locals: {dish: dish} %>
+    <% end %>
   <% end %>
+
 </div>
