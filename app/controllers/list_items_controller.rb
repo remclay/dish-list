@@ -1,5 +1,5 @@
 class ListItemsController < ApplicationController
-  before_action :authentication_required, only: [:create]
+  before_action :authentication_required
   layout 'default'
 
   def create

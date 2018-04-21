@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  before_action :authentication_required, only: [:home]
 
   def index
     if logged_in?

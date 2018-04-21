@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :authentication_required, only: [:show]
+  before_action :authentication_required
   layout 'default'
 
   def index

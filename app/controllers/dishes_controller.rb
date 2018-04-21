@@ -1,7 +1,7 @@
 require 'pry'
 
 class DishesController < ApplicationController
-  before_action :authentication_required, only: [:new, :create]
+  before_action :authentication_required
   layout 'default'
 
   def index
