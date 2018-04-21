@@ -6,7 +6,7 @@
 
   <% @dishes.each.with_index(1) do |dish, i| %>
     <p><strong><%= i %>. <%= dish.name %></strong> at <%= dish.restaurant.name %><br>
-    Added to <%= dish.popularity %> Dish-Lists
+    Added to <%= pluralize(dish.popularity, "Dish-List") %></li><br>
     <%= render partial: "add_remove_link", locals: {dish: dish} %>
   <% end %>
 </div>
