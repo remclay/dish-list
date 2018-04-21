@@ -2,7 +2,7 @@
   <% if session[:user_id] %>
 
     <% unless current_page?(user_dishes_path(session[:user_id])) %>
-    | <%= link_to "View your Dish-List", user_dishes_path(session[:user_id]) %> |
+    | <%= link_to "View your Dish-List", user_dishes_path(current_user) %> |
     <% end %>
 
     <% unless current_page?(new_user_dish_path(session[:user_id])) %>

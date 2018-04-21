@@ -8,6 +8,10 @@ class SessionsController < ApplicationController
     if auth_hash = request.env['omniauth.auth']
       user = User.find_or_create_by_omniauth(auth_hash)
       session[:user_id] = user.id
+      if user.list == nil
+        user.build_list
+        user.save
+      end
       redirect_to welcome_path
     else # Regular log in path
       @user = User.find_by(email: params[:email])
