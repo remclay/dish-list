@@ -8,6 +8,6 @@
   <h3>Dish-List dishes:</h3>
 
   <% @restaurant.dishes.each do |dish| %>
-      <li><strong><%= dish.name %></strong> | on <%= pluralize(dish.popularity, "Dish-List") %></li><br>
+      <li><strong><%= link_to dish.name, dish_path(dish) %></strong> | on <%= pluralize(dish.popularity, "Dish-List") %></li><br>
   <% end %><br>
 </div>

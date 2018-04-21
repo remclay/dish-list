@@ -33,8 +33,6 @@ class ListItemsController < ApplicationController
 
   def destroy
     ListItem.find_by(list_id: current_user.id, dish_id: params[:dish_id]).destroy
-    # items = current_user.list.list_items
-    # items.find_by(dish_id: params[:dish_id]).destroy
-    redirect_to list_path, alert: "Dish removed"
+    redirect_to user_dishes_path(current_user), alert: "Dish removed"
   end
 end
