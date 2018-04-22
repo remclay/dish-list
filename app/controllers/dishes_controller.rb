@@ -28,7 +28,7 @@ class DishesController < ApplicationController
         redirect_to user_dishes_path(current_user), alert: "Dish successfully created and added to your list"
       else
         flash[:alert] = @dish.errors.full_messages.first
-        redirect_to new_user_dish_path_path(current_user)
+        redirect_to new_user_dish_path(current_user)
       end
     end
   end
