@@ -106,6 +106,22 @@ grid-template-areas:
   box-shadow: 1px 2px;
 }
 
+.key {
+  font-size: 9.5px;
+}
+
+.key .wrap {
+  display: inline;
+  font-weight: bold;
+  font-size: 9px;
+  border-color: #00001a;
+  border-style: solid;
+  border-width: 1.25px;
+  padding: 1px 5px;
+  text-align: center;
+  text-justify: center;
+}
+
 footer {
  grid-area: footer;
  padding: 20px;
