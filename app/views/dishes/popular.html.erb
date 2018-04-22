@@ -8,11 +8,13 @@
 
   <% else %>
     <br>
-    <% @dishes.each.with_index(1) do |dish, i| %>
-      <p><strong><%= i %>. <%= dish.name %></strong> at <%= dish.restaurant.name %><br>
-      Added to <%= pluralize(dish.popularity, "Dish-List") %></li><br>
-      <%= render partial: "add_remove_link", locals: {dish: dish} %>
-    <% end %>
+    <div class="inline">
+      <% @dishes.each.with_index(1) do |dish, i| %>
+        <p><strong><%= i %>. <%= dish.name %></strong> at <%= dish.restaurant.name %>
+        <%= render partial: "add_remove_link", locals: {dish: dish} %><br>
+        Added to <%= pluralize(dish.popularity, "Dish-List") %></li><br><br>
+      <% end %>
+    </div>
   <% end %>
 
 </div>
