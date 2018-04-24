@@ -11,6 +11,6 @@ class RestaurantsController < ApplicationController
   end
 
   def popular
-    @restaurants = Dish.most_popular.collect {|dish| dish.restaurant }.uniq
+    @restaurants = Dish.most_popular.collect {|dish| dish.restaurant}.uniq
   end
 end

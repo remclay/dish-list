@@ -6,6 +6,8 @@ class Dish < ApplicationRecord
   accepts_nested_attributes_for :restaurant, reject_if: :reject_restaurant
   validate :unique_dish, :unique_restaurant
 
+  scope :most_popular, -> {order(popularity: :desc).limit(10)}
+
   def reject_restaurant(attributes)
     attributes[:name].blank? || attributes[:cuisine].blank? || attributes[:location].blank?
   end
@@ -18,8 +20,6 @@ class Dish < ApplicationRecord
           restaurant.cuisine == self.restaurant.cuisine && restaurant.location == self.restaurant.location
         end
         errors.add(:restaurant_id, "Restaurant already exists")
-        # && @existing_restaurants.cuisine == self.restaurant.cuisine && @existing_restaurant.location == self.restaurant.location
-        # errors.add(:restaurant_id, "Restaurant already exists")
         end
       end
     end
@@ -47,9 +47,5 @@ class Dish < ApplicationRecord
   def increase_popularity
     self.popularity += 1
     self.save
-  end
-
-  def self.most_popular
-    Dish.order(popularity: :desc).first(10)
   end
 end
