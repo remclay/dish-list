@@ -2,7 +2,7 @@
   <h1>Restaurants with most popular dishes</h1>
   <h3>Exactly where to find our most popular dishes</h3>
 
-  <% if @restaurants.empty? %>
+  <% if @restaurants.empty? || nil %>
     <%= render partial: "dishes/no_dishes" %>
 
   <% else %>

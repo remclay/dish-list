@@ -11,7 +11,7 @@
     <h3>Every dish users are craving</h3>
   <% end %>
 
-  <% if @dishes.empty? %>
+  <% if @dishes.empty? || nil %>
     <%= render partial: "no_dishes" %>
 
   <% else %>

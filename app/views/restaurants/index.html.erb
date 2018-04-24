@@ -2,7 +2,7 @@
   <h1>Restaurants</h1>
   <h3>Every Dish-List worthy restaurant</h3>
 
-  <% if @restaurants.empty? %>
+  <% if @restaurants.empty? || nil %>
     <%= render partial: "dishes/no_dishes" %>
 
   <% else %>
