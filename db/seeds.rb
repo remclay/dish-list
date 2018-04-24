@@ -9,6 +9,7 @@
 5.times do
   @user = User.create(
     email: Faker::Internet.email,
+    name: Faker::Name.name,
     password: Faker::Internet.password(min_length = 6, max_length = 20),
     # name: Faker::Name.name
   )

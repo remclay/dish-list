@@ -6,7 +6,7 @@
 
   <% @lists.each do |list| %>
   <ul>
-    <li><%= link_to list.user.email, list_path(list) %></li>
+    <li><%= link_to list.user.name, list_path(list) %></li>
   </ul>
 
   <% end %>
