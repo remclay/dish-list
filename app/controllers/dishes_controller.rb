@@ -20,11 +20,11 @@ class DishesController < ApplicationController
 
   def create
     if params[:dish][:restaurant_id] != "" && params[:dish][:restaurant_attributes][:name] != ""
-      redirect_to new_user_dish_path(current_user), alert: "Please either select an existing restaurnt or add a new one"
+      redirect_to new_user_dish_path(current_user), alert: "Please either select an existing restaurant or add a new one"
     else
       @dish = Dish.new(dish_params)
       if @dish.save
-        add_dish_to_list
+        add_dish_to_list(@dish)
         redirect_to user_dishes_path(current_user), alert: "Dish successfully created and added to your list"
       else
         flash[:alert] = @dish.errors.full_messages.first
@@ -37,17 +37,17 @@ class DishesController < ApplicationController
     @dish = Dish.find_by(id: params[:id])
   end
 
-  def add_dish_to_list
-    @list = current_user.list
-    @list.add_item(@dish.id)
-    #No validation here yet
-  end
-
   def popular
     @dishes = Dish.most_popular
   end
 
   private
+
+  def add_dish_to_list(dish)
+    @list = current_user.list
+    @list.add_item(dish.id)
+  end
+
   def dish_params
     params.require(:dish).permit(:name, :restaurant_id, restaurant_attributes: [:name, :cuisine, :location])
   end
