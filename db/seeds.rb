@@ -29,7 +29,7 @@ end
   Dish.create(
     name: Faker::Food.dish,
     restaurant_id: rand(1..@restaurant_count),
-    popularity: rand(0..10)
+    popularity: rand(1..10)
   )
 end
 
