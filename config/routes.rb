@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :dishes, only: [:show, :index, :create]
   resources :restaurants, only: [:show, :index, :create]
 
-  resources :users, except: [:edit, :update, :destroy] do
+  resources :users, except: [:edit, :show, :update, :destroy] do
     resources :dishes, only: [:show, :index, :new] do
       post '/tasted' => 'list_items#tasted'
     end
