@@ -1,4 +1,4 @@
-<div class="navigation_links">
+<nav class="menu">
   <% if session[:user_id] %>
 
     <% unless current_page?(user_dishes_path(session[:user_id])) %>
@@ -30,4 +30,4 @@
     <% end %>
 
   <% end %>
-</div>
+</nav>
