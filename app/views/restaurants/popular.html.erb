@@ -1,13 +1,10 @@
-<div class="content">
-  <h1>Restaurants with most popular dishes</h1>
-  <h3>Exactly where to find our most popular dishes</h3>
+<h1>Restaurants with most popular dishes</h1>
+<h3>Exactly where to find our most popular dishes</h3>
 
-  <% if @restaurants.empty? || nil %>
-    <%= render partial: "dishes/no_dishes" %>
+<% if @restaurants.empty? || nil %>
+  <%= render partial: "dishes/no_dishes" %>
 
-  <% else %>
-    <br>
-    <%= render @restaurants %>
-  <% end %>
-
-</div>
+<% else %>
+  <br>
+  <%= render @restaurants %>
+<% end %>
