@@ -1,8 +1,10 @@
-<h1>Log in</h1>
+<div class="text">
+  <h1>Already a member?<br>Sign in</h1>
 
-<%= form_tag(sessions_path) do %>
-  Email: <%= text_field_tag :email, '', :class => "tbc", :placeholder => "Login with your email" %><br><br>
-  Password:<%= password_field_tag :password %><br>
+  <%= form_tag(sessions_path) do %>
+    Email: <%= text_field_tag :email, '', :class => "form-field", :placeholder => "Login with your email" %><br><br>
+    Password:<%= password_field_tag :password, '', :class => "form-field", :placeholder => "6-20 characters" %><br><br>
 
-  <%= submit_tag "Log in" %><br>
-<% end %>
+    <%= submit_tag "Log in", :class => "form-submit" %><br>
+  <% end %>
+</div>
