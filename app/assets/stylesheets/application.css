@@ -9,11 +9,11 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ */
  *= require_tree .
  *= require_self
- */
-/*
+
+
  body {
    font-size: 15px;
    font-family: Arial, Helvetica, sans-serif;
@@ -27,7 +27,7 @@
 .container {
  display: grid;
  grid-template-columns: 1fr 1fr 1fr;
- grid-template-rows: 500px 1fr 30px;
+ grid-template-rows: 500px minmax(750px, 1fr) 30px;
  grid-gap: 5px;
  grid-template-areas:
      "header header header"
@@ -97,6 +97,47 @@
   font-weight: 600;
 }
 
+.inline p {
+  display: inline;
+}
+
+.inline .button_to {
+  display: inline;
+}
+
+.inline input {
+  color: #00001a;
+  background-color: rgb(211, 215, 223);
+  font-size: 11px;
+  font-weight: bold;
+  border-color: #00001a;
+  border-style: solid;
+  border-width: 1.25px;
+  padding: 1px 5px;
+  text-align: center;
+  text-justify: center;
+}
+
+.inline input:hover {
+  box-shadow: 1px 2px;
+}
+
+.key {
+  font-size: 9.5px;
+}
+
+.key .wrap {
+  display: inline;
+  font-weight: bold;
+  font-size: 9px;
+  border-color: #00001a;
+  border-style: solid;
+  border-width: 1.25px;
+  padding: 1px 5px;
+  text-align: center;
+  text-justify: center;
+}
+
 footer {
   grid-area: footer;
   padding: 20px;
@@ -104,6 +145,10 @@ footer {
   justify-self: center;
   letter-spacing: 1.5px;
   font-size: 12px;
+}
+
+img {
+ max-width: 100%
 }
 
 .sidebar {
@@ -171,4 +216,4 @@ footer {
   .sidebar {
   display: none;
   }
-} */
+}
