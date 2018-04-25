@@ -15,7 +15,13 @@
         <%= render partial: "layouts/profile_links" %>
       </div>
 
-      <%= yield %>
+      <div class="content">
+        <%= yield %>
+
+        <div class="index-images">
+          <%= render partial: "layouts/placeholder_images" %>
+        </div>
+      </div>
 
     </div>
   </body>
