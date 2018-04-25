@@ -1,33 +1,30 @@
-<div class="content">
+<% if params[:user_id] %>
+  <h1>Your Dish-List</h1>
+  <h3>Every dish on your personal must-eat list</h3>
+  <p>If you've tried a dish but can't wait to eat it again, mark it as tasted and leave it on your Dish-List</p>
+  <p>Otherwise, take it off and start hunting for your next must-try meal!</p>
 
+<% else %>
+  <h1>Dishes</h1>
+  <h3>Every dish users are craving</h3>
+<% end %>
+
+<% if @dishes.empty? || nil %>
+  <%= render partial: "no_dishes" %>
+
+<% else %>
+  <br>
+  <% @dishes.each do |dish| %>
+    <div class="inline">
+      <%= render partial: "dish", locals: {dish: dish} %>
+      <%= render partial: "add_remove_link", locals: {dish: dish} %>
+    </div><br>
+  <% end %>
+
+  <br><br>
   <% if params[:user_id] %>
-    <h1>Your Dish-List</h1>
-    <h3>Every dish on your personal must-eat list</h3>
-    <p>If you've tried a dish but can't wait to eat it again, mark it as tasted and leave it on your Dish-List</p>
-    <p>Otherwise, take it off and start hunting for your next must-try meal!</p>
-
-  <% else %>
-    <h1>Dishes</h1>
-    <h3>Every dish users are craving</h3>
+    <%= link_to "Create new dish", new_user_dish_path(current_user) %>
   <% end %>
+<% end %>
 
-  <% if @dishes.empty? || nil %>
-    <%= render partial: "no_dishes" %>
-
-  <% else %>
-    <br>
-    <% @dishes.each do |dish| %>
-      <div class="inline">
-        <%= render partial: "dish", locals: {dish: dish} %>
-        <%= render partial: "add_remove_link", locals: {dish: dish} %>
-      </div><br>
-    <% end %>
-
-    <br><br>
-    <% if params[:user_id] %>
-      <%= link_to "Create new dish", new_user_dish_path(current_user) %>
-    <% end %>
-  <% end %>
-
-  <%= render partial: "key" %>
-</div>
+<%= render partial: "key" %>
