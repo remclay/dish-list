@@ -2,7 +2,7 @@ require 'pry'
 
 class DishesController < ApplicationController
   before_action :authentication_required
-  layout 'default'
+  layout 'application'
 
   def index
     if params[:user_id]

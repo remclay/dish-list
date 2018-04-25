@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :authentication_required
-  layout 'default'
+  layout 'application'
 
   def index
     @lists = List.all

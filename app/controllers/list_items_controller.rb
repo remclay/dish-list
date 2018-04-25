@@ -1,6 +1,6 @@
 class ListItemsController < ApplicationController
   before_action :authentication_required
-  layout 'default'
+  layout 'application'
 
   def create
     @list = current_user.list
