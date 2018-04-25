@@ -1,3 +1,6 @@
+/* *= require_tree . */
+*= require_self
+
 body {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
@@ -10,14 +13,14 @@ a {
 
 .container {
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: 1fr;
 grid-template-rows: 500px 450px 30px;
 // grid-template-rows: 500px 1fr 30px;
 grid-gap: 5px;
 grid-template-areas:
-    "header header header"
-    "sidebar sidebar sidebar"
-    "footer footer footer"
+    "header"
+    "content"
+    "footer"
 }
 
 .top {
@@ -48,7 +51,7 @@ grid-template-areas:
  font: white;
 }
 
-.navigation_links {
+.menu {
  grid-area: nav;
  align-self: center;
  justify-self: center;
@@ -56,21 +59,12 @@ grid-template-areas:
  font-size: 12px;
 }
 
-.content {
+/* .content {
  display: none;
-}
-
-footer {
- grid-area: footer;
- padding: 20px;
- align-self: center;
- justify-self: center;
- letter-spacing: 1.5px;
- font-size: 12px;
-}
+} */
 
 .sidebar {
- grid-area: sidebar;
+ grid-area: content;
  background-color: #00001a;
  border-radius: 15px;
  padding: 15px;
@@ -116,10 +110,20 @@ footer {
  color: #00001a;
  text-transform: uppercase;
  padding: 5px;
+ text-align: center;
 }
 
 .item:hover .item_overlay {
  display: grid;
+}
+
+footer {
+ grid-area: footer;
+ padding: 20px;
+ align-self: center;
+ justify-self: center;
+ letter-spacing: 1.5px;
+ font-size: 12px;
 }
 
 /* // @media (max-width: 700px) {
