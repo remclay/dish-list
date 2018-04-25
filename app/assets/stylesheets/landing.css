@@ -1,3 +1,5 @@
+*= require_self
+
 body {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
@@ -6,6 +8,7 @@ body {
 
 .container {
 display: grid;
+font-family: Arial, Helvetica, sans-serif;
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows: 1fr 1fr 1fr;
 // grid-template-rows: 500px 1fr 30px;
@@ -62,11 +65,31 @@ grid-template-areas:
   color: #00001a;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 300px minmax(auto auto);
-  /* grid-gap: 5px; */
+  grid-template-rows: auto 300px minmax(auto auto);
   grid-template-areas:
+      "errors"
       "text"
       "images"
+}
+
+#flash_alert {
+  grid-area: errors;
+  color: rgb(76, 19, 13);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+#flash_notice {
+  grid-area: errors;
+  color: rgb(76, 19, 13);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  border-style: solid;
+  border-width: 2px;
 }
 
 .text {
@@ -132,7 +155,7 @@ grid-template-areas:
  border-radius: 15px;
  position: relative;
  display: grid;
- justify-items: center;
+ /* justify-items: center; */
  align-items: center;
  transition: 0.2s;
  display: none;
@@ -145,6 +168,7 @@ grid-template-areas:
  background-color: #ffffff80;
  color: #00001a;
  padding: 5px;
+ text-align: center;
 }
 
 .item:hover .item_overlay {

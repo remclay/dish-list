@@ -35,6 +35,15 @@
      "footer footer footer"
 }
 
+#flash_alert {
+  color: rgb(76, 19, 13);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  border-style: solid;
+  border-width: 2px;
+}
+
 .top {
   grid-area: header;
   display: grid;
