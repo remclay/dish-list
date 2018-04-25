@@ -7,11 +7,12 @@ body {
 .container {
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows: 500px 450px;
+grid-template-rows: 1fr 1fr 1fr;
 // grid-template-rows: 500px 1fr 30px;
 grid-gap: 5px;
 grid-template-areas:
     "header header header"
+    "content content content"
     "content content content"
 }
 
@@ -61,21 +62,40 @@ grid-template-areas:
   color: #00001a;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 4fr;
-  grid-gap: 5px;
+  grid-template-rows: 300px minmax(auto auto);
+  /* grid-gap: 5px; */
   grid-template-areas:
       "text"
       "images"
 }
 
-.blurb {
+.text {
   grid-area: text;
   border-radius: 15px;
   padding: 30px;
-  text-transform: uppercase;
   letter-spacing: 1.5px;
   text-align: center;
-  font-weight: 100px;
+}
+
+.text h1 {
+  letter-spacing: 2px;
+  margin-top: 0px;
+}
+
+.form-submit {
+  font-size: 15px;
+  border-color: #00001a;
+  background-color: rgb(211, 215, 223);
+  border-style: solid;
+  border-width: 1.25px;
+  font-weight: bold;
+  padding: 1px 5px;
+  text-align: center;
+  text-justify: center;
+}
+
+.form-submit:hover {
+  box-shadow: 1px 2px;
 }
 
 .index-images {
