@@ -3,7 +3,7 @@
     <%= render partial: "status_display", locals: {dish: dish} %>
   <% end %>
 
-  <strong><%= link_to dish.name, dish_path(dish) %></strong> | <%= dish.restaurant.name %> | <%= dish.restaurant.location %>
+  <%= link_to dish.name, dish_path(dish) %> | <%= dish.restaurant.name %> | <%= dish.restaurant.location %>
 
   <% if params[:user_id] && !tried_dish(dish) %>
     <%= button_to "tried", user_dish_tasted_path(dish_id: dish), :method => :post, params: {dish_id: dish.id} %>
