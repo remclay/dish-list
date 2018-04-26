@@ -41,6 +41,6 @@ end
   ListItem.create(
     list_id: rand(1..@list_count),
     dish_id: rand(1..@dish_count),
-    status: [true, false].sample
+    tasted: [true, false].sample
   )
 end
