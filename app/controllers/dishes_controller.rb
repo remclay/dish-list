@@ -1,5 +1,3 @@
-require 'pry'
-
 class DishesController < ApplicationController
   before_action :authentication_required
   layout 'application'
@@ -13,7 +11,7 @@ class DishesController < ApplicationController
         redirect_to dishes_path
       end
     else
-    # Accessing Dishes#index
+    # Accessing all dishes
       @dishes = Dish.all
     end
   end

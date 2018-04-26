@@ -5,7 +5,7 @@ Specs:
 - [x] Include at least one has_many relationship: Restaurant has_many :dishes, Dish has_many :list_items
 - [x] Include at least one belongs_to relationship: Dish belongs_to :restaurant
 - [x] Include at least one has_many through relationship: Dish has_many :lists, through: :list_items
-- [ ] The "through" part of the has_many through includes at least one user submittable attribute: list_item attribute "tasted"
+- [x] The "through" part of the has_many through includes at least one user submittable attribute: list_item attribute "tasted"
 - [x] Include reasonable validations for simple model objects: validations in both User and Dish models
 - [x] Include a class level ActiveRecord scope method: Dish scope :most_popular, URL '/most_popular'
 - [x] Include signup: own authentication logic and use of Rails has_secure_password
