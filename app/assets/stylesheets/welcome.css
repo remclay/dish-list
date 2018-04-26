@@ -14,8 +14,7 @@ a {
 .container {
 display: grid;
 grid-template-columns: 1fr;
-grid-template-rows: 500px 450px 30px;
-// grid-template-rows: 500px 1fr 30px;
+grid-template-rows: 500px 1fr 30px;
 grid-gap: 5px;
 grid-template-areas:
     "header"
@@ -125,17 +124,3 @@ footer {
  letter-spacing: 1.5px;
  font-size: 12px;
 }
-
-/* // @media (max-width: 700px) {
-//  .container {
-//    grid-template-columns: 1fr;
-//    grid-template-rows: 1fr;
-//    grid-template-areas:
-//    "header"
-//    "content"
-//    "footer"
-//  }
-//  .sidebar {
-//  display: none;
-//  }
-// } */

@@ -1,4 +1,4 @@
-*= require_self
+/* *= require_self */
 
 body {
   font-size: 15px;
@@ -183,4 +183,17 @@ grid-template-areas:
 
 .item:hover .item_overlay {
  display: grid;
+}
+
+@media (max-width: 500px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    "header"
+    "content"
+  }
+  .index-images {
+    display: none;
+  }
 }
