@@ -138,7 +138,7 @@ grid-template-areas:
  padding: 15px;
  letter-spacing: 1.25px;
  display: grid;
- grid-gap: 15px;
+ grid-gap: 10px;
  grid-template-columns: 1fr 1fr 1fr 1fr;
  grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
 }
@@ -165,7 +165,7 @@ grid-template-areas:
  border-radius: 15px;
  position: relative;
  display: grid;
- /* justify-items: center; */
+ justify-items: center;
  align-items: center;
  transition: 0.2s;
  display: none;
@@ -173,7 +173,6 @@ grid-template-areas:
 
 .item_overlay p {
  text-transform: uppercase;
- box-shadow: 1px 1px;
  border: 2px solid #00001a;
  background-color: #ffffff80;
  color: #00001a;

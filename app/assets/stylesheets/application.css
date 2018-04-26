@@ -165,7 +165,6 @@ img {
   border-radius: 15px;
   padding: 10px;
   letter-spacing: 1.25px;
-
   display: grid;
   grid-gap: 10px;
   grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
