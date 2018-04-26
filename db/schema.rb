@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180417221429) do
     t.integer "dish_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: false
+    t.boolean "tasted", default: false
   end
 
   create_table "lists", force: :cascade do |t|
