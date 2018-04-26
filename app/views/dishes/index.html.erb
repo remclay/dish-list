@@ -19,11 +19,7 @@
       <%= render partial: "add_remove_link", locals: {dish: dish} %>
     </div><br>
   <% end %>
-
-  <br><br>
-  <% if params[:user_id] %>
-    <%= link_to "Create new dish", new_user_dish_path(current_user) %>
-  <% end %>
 <% end %>
 
+<br><br><br>
 <%= render partial: "key" %>
