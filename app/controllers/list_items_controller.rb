@@ -2,6 +2,7 @@ class ListItemsController < ApplicationController
   before_action :authentication_required
   layout 'application'
 
+  # Add existing dish to current user's list
   def create
     @list = current_user.list
     @list_item = @list.list_items.new(dish_id: params[:dish_id])
@@ -17,10 +18,11 @@ class ListItemsController < ApplicationController
     @list_item.dish.increase_popularity
   end
 
+  # Update dish tasted attribute to true
   def tasted
     item = ListItem.find_by(list_id: params[:user_id], dish_id: params[:dish_id])
     if item
-      item.status = true
+      item.tasted = true
       if item.save
         redirect_to user_dishes_path(current_user), alert: "Hope that dish was tasty!"
       else

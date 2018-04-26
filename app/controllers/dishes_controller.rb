@@ -5,9 +5,15 @@ class DishesController < ApplicationController
   layout 'application'
 
   def index
+    # If accessing from nested route (user's own list)
     if params[:user_id]
-      @dishes = current_user.list.dishes
+      if current_user.id == params[:user_id].to_i
+        @dishes = current_user.list.dishes
+      else
+        redirect_to dishes_path
+      end
     else
+    # Accessing Dishes#index
       @dishes = Dish.all
     end
   end
@@ -21,6 +27,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
+      # Add to users list
       add_dish_to_list(@dish)
       redirect_to user_dishes_path(current_user), alert: "Dish successfully created and added to your list"
     else
@@ -39,6 +46,7 @@ class DishesController < ApplicationController
 
   private
 
+  # List model creates list_item
   def add_dish_to_list(dish)
     @list = current_user.list
     @list.add_item(dish.id)
