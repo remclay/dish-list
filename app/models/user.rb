@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :password, length: { in: 6..20 }
   validates :email, uniqueness: true
+  validates :email, :email_format => { :message => "Please enter a valid email address"}
 
   has_one :list
 

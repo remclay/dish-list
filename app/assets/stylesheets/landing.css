@@ -72,6 +72,16 @@ grid-template-areas:
       "images"
 }
 
+.field_with_errors {
+  grid-area: errors;
+  color: rgb(76, 19, 13);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  border-style: solid;
+  border-width: 2px;
+}
+
 #flash_alert {
   grid-area: errors;
   color: rgb(76, 19, 13);
