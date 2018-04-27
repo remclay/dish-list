@@ -1,11 +1,1 @@
-<p>
-  <% if params[:user_id] %>
-    <%= render partial: "tasted_display", locals: {dish: dish} %>
-  <% end %>
-
-  <%= link_to dish.name, dish_path(dish) %> | <%= dish.restaurant.name %> | <%= dish.restaurant.location %>
-
-  <% if params[:user_id] && !tried_dish(dish) %>
-    <%= button_to "tried", user_dish_tasted_path(dish_id: dish), :method => :post, params: {dish_id: dish.id} %>
-  <% end %>
-</p>
+<%= link_to dish.name, dish_path(dish) %> | <%= dish.restaurant.name %> | <%= dish.restaurant.location %>

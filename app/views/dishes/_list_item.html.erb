@@ -1,0 +1,14 @@
+<div class="inline">
+
+  <% if params[:user_id] %>
+    <%= render partial: "tasted_display", locals: {dish: dish} %>
+  <% end %>
+
+  <p><%= render partial: "dish", locals: {dish: dish} %></p>
+
+  <% if params[:user_id] && !tried_dish(dish) %>
+    <%= button_to "tasted", user_dish_tasted_path(dish_id: dish), :method => :post, params: {dish_id: dish.id} %>
+  <% end %>
+
+  <%= render partial: "add_remove_link", locals: {dish: dish} %>
+</div><br>

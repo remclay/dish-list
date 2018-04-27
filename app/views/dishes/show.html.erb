@@ -1,9 +1,10 @@
-<h1><%= @dish.name %> at <br>
-<%= link_to @dish.restaurant.name, restaurant_path(@dish.restaurant) %></h1>
+<h1><%= @dish.name %></h1>
+<h3>at <%= link_to @dish.restaurant.name, restaurant_path(@dish.restaurant) %></h3>
+<br>
 
-<p>This dish has been added to <%= pluralize(@dish.popularity, "Dish-List") %></li><br></p>
+<strong>Type of cuisine:</strong> <%= @dish.restaurant.cuisine %><br><br>
 
-<h4>Type of cuisine: <%= @dish.restaurant.cuisine %></h4>
-<h4>Location: <%= @dish.restaurant.location %></h4>
+<strong>Location:</strong> <%= @dish.restaurant.location %><br><br>
 
+<%= render partial: "popularity", locals: {dish: @dish} %></h3><br><br>
 <%= render partial: "add_remove_link", locals: {dish: @dish} %>

@@ -14,10 +14,7 @@
 <% else %>
   <br>
   <% @dishes.each do |dish| %>
-    <div class="inline">
-      <%= render partial: "dish", locals: {dish: dish} %>
-      <%= render partial: "add_remove_link", locals: {dish: dish} %>
-    </div><br>
+    <%= render partial: "list_item", locals: {dish: dish} %>
   <% end %>
 <% end %>
 

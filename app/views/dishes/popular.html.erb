@@ -1,5 +1,4 @@
 <h1>10 Most Popular Dishes</h1>
-
 <h3>The dishes added to the most lists</h3>
 
 <% if @dishes.empty? || nil %>
@@ -7,11 +6,16 @@
 
 <% else %>
   <br>
+
   <div class="inline">
+    <ol>
     <% @dishes.each.with_index(1) do |dish, i| %>
-      <p><strong><%= i %>. <%= dish.name %></strong> at <%= dish.restaurant.name %>
-      <%= render partial: "add_remove_link", locals: {dish: dish} %><br>
-      Added to <%= pluralize(dish.popularity, "Dish-List") %></li><br><br>
+        <li>
+          <%= render partial: "list_item", locals: {dish: dish, i: i} %>
+          <%= render partial: "popularity", locals: {dish: dish} %><br><br>
+        </li>
     <% end %>
+    </ol>
   </div>
+  
 <% end %>
