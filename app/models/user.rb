@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, :email_format => { :message => "Please enter a valid email address"}
   has_one :list
 
-  # Logged in via OAuth
+  # Logged in via OAuth - find if logged in via GitHub before, otherwise create
   def self.find_or_create_by_omniauth(auth_hash)
     self.where(:email => auth_hash['info']['email']).first_or_create do |user|
       user.name = auth_hash['info']['name']
