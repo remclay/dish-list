@@ -21,5 +21,7 @@
   <% end %>
 <% end %>
 
-<br><br><br>
-<%= render partial: "key" %>
+<% if params[:user_id] %>
+  <br><br><br>
+  <%= render partial: "key" %>
+<% end %>
