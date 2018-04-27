@@ -19,15 +19,10 @@ class ListItemsController < ApplicationController
     dish.increase_popularity
   end
 
-  # Update dish tasted attribute to true
+  # Update dish 'tasted' attribute to true
   def tasted
-    if @list_item
-      @list_item.tasted = true
-      if @list_item.save
-        redirect_to user_dishes_path(current_user), alert: "Hope that dish was tasty!"
-      else
-        redirect_to user_dishes_path(current_user), alert: "Dish could not be updated"
-      end
+    if @list_item.try(:mark_as_tasted)
+      redirect_to user_dishes_path(current_user), alert: "Hope that dish was tasty!"
     else
       redirect_to user_dishes_path(current_user), alert: "Dish could not be updated"
     end
