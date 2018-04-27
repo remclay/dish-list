@@ -1,10 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
   validates :email, presence: true
-  validates :password, presence: true
   validates :password, length: { in: 6..20 }
   validates :email, uniqueness: true
-  validates :email, :email_format => { :message => "Please enter a valid email address"}
+  validates :email, :email_format => { :message => "address must be valid"}
   has_one :list
 
   # Logged in via OAuth - find if logged in via GitHub before, otherwise create
