@@ -24,8 +24,8 @@ class Dish < ApplicationRecord
   end
 
   def unique_restaurant
-    # If a dish name has been entered, an existing restaurant has not been selected, & a new restaurant name has been entered
-    if self.name != "" && self.restaurant_id == nil && self.restaurant.name != ""
+    # If an existing restaurant has not been selected, & a new restaurant name has been entered
+    if self.restaurant_id == nil && self.restaurant.name != ""
       # Find all restaurants with that name
       @existing_restaurants = Restaurant.where(name: self.restaurant.name)
       if !@existing_restaurants.empty?
