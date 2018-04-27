@@ -19,7 +19,7 @@ class Dish < ApplicationRecord
           if @existing_restaurants.any? do |restaurant|
             restaurant.cuisine == self.restaurant.cuisine && restaurant.location == self.restaurant.location
           end
-          errors.add(:restaurant_id, "Restaurant already exists")
+          errors.add(:restaurant_id, "already exists. Please add dish to the existing restaurant.")
           end
         end
       end
@@ -33,13 +33,13 @@ class Dish < ApplicationRecord
          dish.restaurant == self.restaurant
          #exact dish exists, with selected restaurant
          end
-         errors.add(:dish, "That dish already exists at the restaurant you selected. Please add the existing dish to your Dish-List")
-      elsif
-        #exact dish exists, newly entered restaurant already exists
-        @existing_dishes.any? do |dish|
-          dish.restaurant.name == self.restaurant.name && dish.restaurant.cuisine == self.restaurant.cuisine && dish.restaurant.location == self.restaurant.location
-        end
-        errors.add(:dish, "That dish and restaurant already exist. Please add the existing dish to your Dish-List")
+         errors.add(:dish, "already exists at the restaurant you selected. Please add the existing dish to your Dish-List")
+      # elsif
+      #   #exact dish exists, newly entered restaurant already exists
+      #   @existing_dishes.any? do |dish|
+      #     dish.restaurant.name == self.restaurant.name && dish.restaurant.cuisine == self.restaurant.cuisine && dish.restaurant.location == self.restaurant.location
+      #   end
+      #   errors.add(:dish, "That dish and restaurant already exist. Please add the existing dish to your Dish-List")
       end
     end
   end
