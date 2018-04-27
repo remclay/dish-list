@@ -1,17 +1,6 @@
 <div class="text">
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <p><%= pluralize(@user.errors.count, "error") %> prohibited your account from being created:</p>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <h1>New to Dish-List? Sign up</h1>
+  <%= render partial: "errors" %>
+  <h1>New to Dish-List? Sign up</h1>
 
   <div>
     <%= render @user %>
