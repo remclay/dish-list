@@ -16,17 +16,11 @@ class SessionsController < ApplicationController
       redirect_to welcome_path
     else # Regular log in path
       @user = User.find_by(email: params[:email])
-      if @user
-        if @user.authenticate(params[:password])
-          session[:user_id] = @user.id
-          redirect_to welcome_path, alert: "Welcome back"
-        else
-          #refactor this away
-          flash[:notice] = "Invalid password"
-          render 'sessions/new'
-        end
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect_to welcome_path, alert: "Welcome back"
       else
-        flash[:notice] = "Incorrect email"
+        flash[:notice] = "Invalid email or password"
         render 'sessions/new'
       end
     end
