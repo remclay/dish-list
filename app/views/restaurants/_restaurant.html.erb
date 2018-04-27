@@ -1,6 +1,6 @@
 <div class="inline">
   <%= link_to restaurant.name, restaurant_path(restaurant) %> | <%= pluralize(restaurant.dishes.count, "Dish-List dish") %><br><br>
   Location: <%= restaurant.location %><br><br>
-  Cuisine: <%= restaurant.cuisine %>
+  Type of cuisine: <%= restaurant.cuisine %>
 </div>
 <br><br>

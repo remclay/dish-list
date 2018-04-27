@@ -7,5 +7,10 @@
 <h3>Dish-List dishes:</h3>
 
 <% @restaurant.dishes.each do |dish| %>
-    <li><strong><%= link_to dish.name, dish_path(dish) %></strong> | on <%= pluralize(dish.popularity, "Dish-List") %></li><br>
+    <ul>
+      <li>
+        <strong><%= link_to dish.name, dish_path(dish) %></strong> |
+        <%= render partial: "dishes/popularity", locals: {dish: dish} %>
+      </li><br>
+    </ul>
 <% end %><br>
