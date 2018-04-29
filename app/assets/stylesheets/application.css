@@ -16,11 +16,11 @@
 
  body {
    font-size: 15px;
-   --dark-blue: #00001a;
+   color: #00001a;
  }
 
  a {
-   color: var(--dark-blue);
+   color: #00001a;
  }
 
 .container {
@@ -75,17 +75,18 @@
 .menu {
   grid-area: nav;
   align-self: center;
-  justify-self: center;
+  padding: 0 5px;
+  text-align: center;
   letter-spacing: 1.5px;
   font-size: 12px;
 }
 
 .content {
   grid-area: content;
+  background-color: rgb(211, 215, 223);
   border-radius: 15px;
   padding: 30px;
   letter-spacing: 1.25px;
-  background-color: rgb(211, 215, 223);
 }
 
 .content h1 {
@@ -147,15 +148,6 @@
   text-justify: center;
 }
 
-footer {
-  grid-area: footer;
-  padding: 20px;
-  align-self: center;
-  justify-self: center;
-  letter-spacing: 1.5px;
-  font-size: 12px;
-}
-
 img {
  max-width: 100%
 }
@@ -168,7 +160,8 @@ img {
   letter-spacing: 1.25px;
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, minmax(150px, 1fr));
 }
 
 .item {
@@ -187,7 +180,7 @@ img {
 }
 
 .item_overlay {
-  background: #ffffff50;
+  background: #ffffff30;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   border-radius: 15px;
@@ -202,14 +195,24 @@ img {
 .item_overlay a {
   text-decoration: none;
   border: 2px solid #00001a;
-  background-color: #ffffff80;
+  background-color: #ffffff60;
   color: #00001a;
   text-transform: uppercase;
   padding: 5px;
+  text-align: center;
 }
 
 .item:hover .item_overlay {
   display: grid;
+}
+
+footer {
+  grid-area: footer;
+  padding: 20px;
+  align-self: center;
+  text-align: center;
+  letter-spacing: 1.5px;
+  font-size: 12px;
 }
 
 @media (max-width: 700px) {
