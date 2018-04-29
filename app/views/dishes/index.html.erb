@@ -16,9 +16,9 @@
   <% @dishes.each do |dish| %>
     <%= render partial: "list_item", locals: {dish: dish} %>
   <% end %>
-<% end %>
 
-<% if params[:user_id] %>
-  <br><br><br>
-  <%= render partial: "key" %>
+  <% if params[:user_id] %>
+    <br><br><br>
+    <%= render partial: "key" %>
+  <% end %>
 <% end %>
