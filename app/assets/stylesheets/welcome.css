@@ -53,23 +53,20 @@ grid-template-areas:
 .menu {
  grid-area: nav;
  align-self: center;
- justify-self: center;
+ padding: 0 5px;
+ text-align: center;
  letter-spacing: 1.5px;
  font-size: 12px;
 }
-
-/* .content {
- display: none;
-} */
 
 .sidebar {
  grid-area: content;
  background-color: #00001a;
  border-radius: 15px;
- padding: 15px;
+ padding: 10px;
  letter-spacing: 1.25px;
  display: grid;
- grid-gap: 20px;
+ grid-gap: 10px;
  grid-template-columns: 1fr 1fr 1fr 1fr;
  grid-template-rows: minmax(150px, 1fr) minmax(150px, 1fr);
 }
@@ -90,7 +87,7 @@ grid-template-areas:
 }
 
 .item_overlay {
- background: #ffffff50;
+ background: #ffffff30;
  grid-column: 1 / -1;
  grid-row: 1 / -1;
  border-radius: 15px;
@@ -105,11 +102,12 @@ grid-template-areas:
 .item_overlay a {
  text-decoration: none;
  border: 2px solid #00001a;
- background-color: #ffffff80;
+ background-color: #ffffff60;
  color: #00001a;
  text-transform: uppercase;
  padding: 5px;
  text-align: center;
+ font-weight: 500;
 }
 
 .item:hover .item_overlay {
@@ -119,8 +117,7 @@ grid-template-areas:
 footer {
  grid-area: footer;
  padding: 20px;
- align-self: center;
- justify-self: center;
+ text-align: center;
  letter-spacing: 1.5px;
  font-size: 12px;
 }
