@@ -33,3 +33,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/'remcl
 ## License
 
 The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Future improvements
+
+For a non-exhaustive list of functionality I would like to add in future, check out todo.md.
