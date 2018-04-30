@@ -7,4 +7,7 @@
 <strong>Location:</strong> <%= @dish.restaurant.location %><br><br>
 
 <%= render partial: "popularity", locals: {dish: @dish} %></h3><br><br>
-<%= render partial: "add_remove_link", locals: {dish: @dish} %>
+
+<div class="inline">
+  <%= render partial: "add_remove_link", locals: {dish: @dish} %>
+</div>
