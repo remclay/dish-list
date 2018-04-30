@@ -24,16 +24,19 @@ class Dish < ApplicationRecord
   end
 
   def unique_restaurant
-    # If an existing restaurant has not been selected, & a new restaurant name has been entered
-    if self.restaurant_id == nil && self.restaurant.name != ""
-      # Find all restaurants with that name
-      @existing_restaurants = Restaurant.where(name: self.restaurant.name)
-      if !@existing_restaurants.empty?
-        # Check if location and cuisine also match
-        if @existing_restaurants.any? do |rest|
-          rest.cuisine == self.restaurant.cuisine && rest.location == self.restaurant.location
+    # If any restaurant details have been entered
+    if self.restaurant
+      # If an existing restaurant has not been selected, & a new restaurant name has been entered
+      if self.restaurant_id == nil && self.restaurant.name != ""
+        # Find all restaurants with that name
+        @existing_restaurants = Restaurant.where(name: self.restaurant.name)
+        if !@existing_restaurants.empty?
+          # Check if location and cuisine also match
+          if @existing_restaurants.any? do |rest|
+            rest.cuisine == self.restaurant.cuisine && rest.location == self.restaurant.location
+            end
+            errors.add(:restaurant_id, "already exists. Please select the restaurant from the list.")
           end
-          errors.add(:restaurant_id, "already exists. Please select the restaurant from the list.")
         end
       end
     end
