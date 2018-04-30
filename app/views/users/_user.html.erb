@@ -1,7 +1,7 @@
 <%= form_for @user do |f| %>
-  Name: <%= f.text_field :name, :class => "form-field", :placeholder => "Full name" %> <br><br>
-  Email: <%= f.text_field :email, :class => "form-field", :placeholder => "Email address" %> <br><br>
-  Password: <%= f.password_field :password, :class => "form-field", :placeholder => "6-20 characters" %><br><br>
-  Confirm password: <%= f.password_field :password_confirmation, :class => "form-field", :placeholder => "Confirm password" %><br><br>
+  Name: <%= f.text_field :name, :placeholder => "Peter Example" %> <br><br>
+  Email: <%= f.text_field :email, :placeholder => "peter@example.com" %> <br><br>
+  Password: <%= f.password_field :password, :placeholder => "6-20 characters" %><br><br>
+  Confirm password: <%= f.password_field :password_confirmation, :placeholder => "6-20 characters" %><br><br>
   <%= f.submit :class => "form-submit" %>
 <% end %>
