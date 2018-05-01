@@ -6,15 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+# Create users
 5.times do
   @user = User.create(
     email: Faker::Internet.email,
     name: Faker::Name.name,
     password: Faker::Internet.password(min_length = 6, max_length = 20),
   )
-  List.create(user_id: @user.id)
+  @list = List.create(user_id: @user.id)
 end
 
+# Create restaurants and dishes
 10.times do
   @restaurant = Restaurant.create(
     name: Faker::Food.spice,
@@ -29,13 +32,26 @@ end
     end
 end
 
-@dish_count = Dish.all.count
-@list_count = List.all.count
+@dishes = Dish.all
+@user_count = User.count
 
-(@dish_count * 2).times do
+# Create ListItems
+@dishes.each do |dish|
   ListItem.create(
-    list_id: rand(1..@list_count),
-    dish_id: rand(1..@dish_count),
+    list_id: rand(1..@user_count),
+    dish_id: dish.id,
+    tasted: [true, false].sample
+  )
+end
+
+# Create Demo user, with unique ListItems
+@demo_user = User.create(email: "john@example.com", name: "John Doe", password: "testing")
+@demo_list = List.create(user_id: @demo_user.id)
+dish_ids = Array.new(10) { rand(1...@dishes.count) }
+dish_ids.uniq.each do |id|
+  ListItem.create(
+    list_id: @demo_list.id,
+    dish_id: id,
     tasted: [true, false].sample
   )
 end
