@@ -16,7 +16,7 @@ Users can:
 
 ## Demo
 
-You can view a short walkthrough of this app at
+You can view a walkthrough of this app at https://drive.google.com/drive/folders/12TcvkwPXB5i7dzP3pCWrGpsd8j4sjgyP
 
 ## Usage
 
