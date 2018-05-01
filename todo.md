@@ -7,4 +7,5 @@ Functionality and features to add:
 - Eliminate need for page refresh when add or remove dish, or mark as tasted;
 - Allow users to view dishes and/or restaurants via location, cuisine, by most recently added, alphabetically etc;
 - Extend functionality to allow users to upload images of dishes, add comments and/or ratings once list_item is marked as tasted;
+- Add OmniAuth login via Google, Facebook;
 - Add further media queries for different sized screens.

@@ -14,7 +14,7 @@ Specs:
 - [x] Include third party signup/login: OmniAuth GitHub login
 - [x] Include nested resource show or index: URL users/:user_id/dishes
 - [x] Include nested resource "new" form: URL users/:user_id/dishes/new
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [x] The application is pretty DRY
