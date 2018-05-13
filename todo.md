@@ -1,4 +1,4 @@
-Functionality and features to add:
+Dish-List Wish-List: functionality and features to add
 
 - Reduce database queries using action caching (expiring on add or create);
 - Improve custom validators for unique_dish and unique_restaurant to catch edge cases (eg. downcase strings before comparison, remove leading or trailing spaces or punctuation);
