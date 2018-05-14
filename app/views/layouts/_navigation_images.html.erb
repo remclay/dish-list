@@ -1,49 +1,49 @@
 <% if session[:user_id] %>
 
   <div class="item">
-    <img src="/../assets/images/your-list.jpg" alt="Food on table">
+    <img src="/../assets/your-list.jpg" alt="Food on table">
     <div class="item_overlay">
       <a href="/users/<%= current_user.id%>/dishes"> your dish-list </a>
     </div>
   </div>
 
   <div class="item">
-    <img src="/../assets/images/add-new.jpg" alt="Doughnut">
+    <img src="/../assets/add-new.jpg" alt="Doughnut">
     <div class="item_overlay">
       <a href="/users/<%= current_user.id%>/dishes/new">create new dish</a>
     </div>
   </div>
 
   <div class="item">
-    <img src="/../assets/images/all-lists.jpg" alt="Food and wine">
+    <img src="/../assets/all-lists.jpg" alt="Food and wine">
     <div class="item_overlay">
       <a href="/lists">all dish-lists</a>
     </div>
   </div>
 
   <div class="item">
-    <img src="/../assets/images/most-popular.jpg" alt="Eat me neon sign">
+    <img src="/../assets/most-popular.jpg" alt="Eat me neon sign">
     <div class="item_overlay">
       <a href="/most_popular">most popular<br>dishes</a>
     </div>
 </div>
 
   <div class="item">
-    <img src="/../assets/images/all-dishes.jpg" alt="Hamburgers">
+    <img src="/../assets/all-dishes.jpg" alt="Hamburgers">
     <div class="item_overlay">
       <a href="/dishes">all dishes</a>
     </div>
   </div>
 
   <div class="item">
-    <img src="/../assets/images/popular-restaurants.jpg" alt="Burgers on counter">
+    <img src="/../assets/popular-restaurants.jpg" alt="Burgers on counter">
     <div class="item_overlay">
       <a href="/most_popular/restaurants">most popular<br>restaurants</a>
     </div>
   </div>
 
   <div class="item">
-    <img src="/../assets/images/all-restaurants.jpg" alt="Restaurant interior">
+    <img src="/../assets/all-restaurants.jpg" alt="Restaurant interior">
     <div class="item_overlay">
       <a href="/restaurants">all restaurants</a>
     </div>
@@ -51,7 +51,7 @@
 
   <% if current_page?(welcome_path) %>
     <div class="item">
-      <img src="/../assets/images/profile.jpg" alt="Paper and pen">
+      <img src="/../assets/profile.jpg" alt="Paper and pen">
       <div class="item_overlay">
         <a href="/welcome">homepage</a>
       </div>
