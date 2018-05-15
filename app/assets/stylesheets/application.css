@@ -15,6 +15,7 @@
  body {
    font-size: 15px;
    color: #00001a;
+   font-family: Arial, Helvetica, sans-serif;
  }
 
  a {
@@ -22,7 +23,6 @@
  }
 
 .container {
- font-family: Arial, Helvetica, sans-serif;
  display: grid;
  grid-template-columns: 1fr 1fr 1fr;
  grid-template-rows: 500px minmax(750px, 1fr) 30px;
