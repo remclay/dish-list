@@ -1,10 +1,12 @@
-<h1><%= @dish.name %></h1>
-<h3>at <%= link_to @dish.restaurant.name, restaurant_path(@dish.restaurant) %></h3>
+<a href="#" class="js-next" data-id="<%=@dish.id%>">next dish</a>
+
+<h1 class="dishName"><%= @dish.name %></h1>
+<h3 class="restaurantName">at <%= link_to @dish.restaurant.name, restaurant_path(@dish.restaurant) %></h3>
 <br>
 
-<strong>Type of cuisine:</strong> <%= @dish.restaurant.cuisine %><br><br>
+<p class="restaurantCuisine"><strong>Type of cuisine:</strong> <%= @dish.restaurant.cuisine %></p>
 
-<strong>Location:</strong> <%= @dish.restaurant.location %><br><br>
+<p class="restaurantLocation"><strong>Location:</strong> <%= @dish.restaurant.location %></p><br><br>
 
 <%= render partial: "popularity", locals: {dish: @dish} %></h3><br><br>
 
