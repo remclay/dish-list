@@ -43,3 +43,16 @@ $(function () {
     });
   });
 });
+
+function Dish(attributes) {
+  this.name = attributes.name
+  this.id = attributes.id
+  this.popularity = attributes.popularity
+  this.restaurant_id = attributes.restaurant_id
+}
+
+Dish.prototype.formatRestaurantDish = function() {
+  var html = ''
+  html += `<li><strong><a href="/dishes/${this.id}">${this.name}</a></strong> | Added to 1 Dish-List</li><br><br>`
+  return html
+}
