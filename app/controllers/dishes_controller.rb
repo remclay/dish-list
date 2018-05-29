@@ -46,7 +46,7 @@ class DishesController < ApplicationController
     @dish = Dish.find_by(id: params[:id])
     respond_to do |format|
      format.html { render :show }
-     format.json { render json: @dish }
+     format.json { render json: @dish, include: '*'}
    end
   end
 

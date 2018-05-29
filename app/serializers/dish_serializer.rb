@@ -1,4 +1,4 @@
 class DishSerializer < ActiveModel::Serializer
   attributes :id, :name, :restaurant_id
-  belongs_to :restaurant
+  has_one :restaurant, serializer: RestaurantSerializer
 end
