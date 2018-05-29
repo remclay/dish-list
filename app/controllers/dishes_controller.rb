@@ -24,10 +24,18 @@ class DishesController < ApplicationController
 
   def create
     @dish = Dish.new(dish_params)
+    # Check if added to restaurant from restaurant#show
+    if params[:restaurant_id]
+      @dish.restaurant_id = params[:restaurant_id]
+    end
     if @dish.save
       # Add to users list
       add_dish_to_list(@dish)
-      redirect_to user_dishes_path(current_user), alert: "Dish successfully created and added to your list"
+      # redirect_to user_dishes_path(current_user), alert: "Dish successfully created and added to your list"
+      respond_to do |f|
+        f.html {redirect_to user_dishes_path(current_user)}
+        f.json {render :json => @dish, status: 201}
+      end
     else
       flash[:alert] = @dish.errors.full_messages.first
       redirect_to new_user_dish_path(current_user)
