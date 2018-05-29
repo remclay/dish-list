@@ -1,5 +1,5 @@
 <% if included_in_list(dish) %>
-  <%= button_to "remove", list_item_path(session[:user_id]), :method => :delete, params: {dish_id: dish.id} %>
+  <%= button_to "remove", list_item_path(session[:user_id]), :form => { :id => "remove_list_item"}, :method => :delete, params: {dish_id: dish.id} %>
 <% else %>
   <%= button_to 'add', list_items_path(dish_id: dish) %>
 <% end %>

@@ -1,0 +1,6 @@
+<%= form_for @restaurant.dishes.build, :url => dishes_path, :html => { :id => "new_restaurant_dish" } do |f| %>
+  <%= f.label :name, "Dish name:" %>
+  <%= f.text_field :name %>
+  <%= hidden_field_tag 'restaurant_id', params[:id] %>
+  <%= f.submit :class => "form-submit" %>
+<% end %>
