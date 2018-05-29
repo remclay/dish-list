@@ -30,7 +30,11 @@ class ListItemsController < ApplicationController
 
   def destroy
     @list_item.destroy
-    redirect_to user_dishes_path(current_user), alert: "Dish removed"
+    # redirect_to user_dishes_path(current_user), alert: "Dish removed"
+    respond_to do |f|
+      f.html {redirect_to user_dishes_path(current_user)}
+      f.json {render :json => @list_item}
+    end
   end
 
   private
