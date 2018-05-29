@@ -6,11 +6,24 @@
 
 <h3>Dish-List dishes:</h3>
 
-<% @restaurant.dishes.each do |dish| %>
-    <ul>
+<ul id="restaurant_show">
+  <% @restaurant.dishes.each do |dish| %>
       <li>
         <strong><%= link_to dish.name, dish_path(dish) %></strong> |
         <%= render partial: "dishes/popularity", locals: {dish: dish} %>
-      </li><br>
-    </ul>
-<% end %><br>
+      </li><br><br>
+  <% end %>
+</ul>
+<%#= button_to  'add new dish', new_user_dish_path(user_id: current_user.id), params: {'restaurant[id]' => params[:id]} %>
+
+<button id="button" data-url="/users/<%= current_user.id %>/dishes/new">Add new dish</button>
+
+<div id="new_dish_form">
+</div>
+
+<%= form_for @restaurant.dishes.build, :url => dishes_path, :html => { :id => "new_restaurant_dish" } do |f| %>
+  <%= f.label :name, "Dish name:" %>
+  <%= f.text_field :name %>
+  <%= hidden_field_tag 'restaurant_id', params[:id] %>
+  <%= f.submit :class => "form-submit" %>
+<% end %>
