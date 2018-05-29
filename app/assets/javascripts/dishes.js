@@ -1,3 +1,31 @@
+function Dish(attributes) {
+  this.name = attributes.name
+  this.id = attributes.id
+  this.popularity = attributes.popularity
+  this.restaurant_id = attributes.restaurant_id
+}
+
+// Create html to display new dish and append to dom
+Dish.success = function(json) {
+  const dish = new Dish({name: json.data.attributes.name, id: json.data.id, restaurant_id: json.data.attributes['restaurant-id'], popularity: 0})
+  dishHtml = dish.formatRestaurantDish();
+  $("#restaurant_show").append(dishHtml);
+}
+
+// Display error message
+Dish.fail = function(response) {
+  // if ajax post request doesn't work
+  // TO DO
+  console.log("Broken", response);
+}
+
+Dish.prototype.formatRestaurantDish = function() {
+  var html = ''
+  html += `<li><strong><a href="/dishes/${this.id}">${this.name}</a></strong> | Added to 1 Dish-List</li><br><br>`
+  return html
+}
+
+// On document ready
 $(function () {
   // Next dish button on dish show page
   $(".js-next").on("click", function(e) {
@@ -29,30 +57,8 @@ $(function () {
       dataType: "json",
       method: "POST"
     })
-    .done(function(json) {
-      // append new dish to dom
+    .done(Dish.success)
       // const html = `<li><strong><a href="/dishes/${json.data.id}">${json.data.attributes.name}</a></strong> | Added to 1 Dish-List</li><br><br>`
-      const dish = new Dish({name: json.data.attributes.name, id: json.data.id, restaurant_id: json.data.attributes['restaurant-id'], popularity: 0})
-      dishHtml = dish.formatRestaurantDish()
-      $("#restaurant_show").append(dishHtml);
-    })
-    .fail(function(response) {
-      // if ajax post request doesn't work
-      // TO DO
-      console.log("Broken", response);
-    });
+    .fail(Dish.fail)
   });
 });
-
-function Dish(attributes) {
-  this.name = attributes.name
-  this.id = attributes.id
-  this.popularity = attributes.popularity
-  this.restaurant_id = attributes.restaurant_id
-}
-
-Dish.prototype.formatRestaurantDish = function() {
-  var html = ''
-  html += `<li><strong><a href="/dishes/${this.id}">${this.name}</a></strong> | Added to 1 Dish-List</li><br><br>`
-  return html
-}
