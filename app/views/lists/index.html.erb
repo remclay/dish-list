@@ -5,6 +5,7 @@
 
 <% @lists.each do |list| %>
 <ul>
-  <li><%= link_to list.user.name, list_path(list) %></li>
+  <li><%= link_to list.user.name, list_path(list) %> | Last updated: <%= ListsHelper.last_updated(list) %>
+  | <%= link_to "view list", list_path(list), id: "view_list" %> </li>
 </ul>
 <% end %>
