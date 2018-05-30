@@ -10,6 +10,8 @@ Dish.success = function(json) {
   const dish = new Dish({name: json.data.attributes.name, id: json.data.id, restaurant_id: json.data.attributes['restaurant-id'], popularity: 0})
   dishHtml = dish.formatRestaurantDish();
   $("#restaurant_show").append(dishHtml);
+  // Need to also reset submit button
+  $("form").trigger("reset");
 }
 
 // Display error message
