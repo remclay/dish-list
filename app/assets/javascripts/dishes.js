@@ -36,12 +36,16 @@ $(function () {
 
     // fix this to ask for json not hard code json extension
     $.get("/dishes/" + nextId + ".json", function(data) {
-      const dish = data
       // refactor into prototype method
+      const dish = data
+      const popularityHtml = `Added to ${dish.data.attributes.popularity} Dish-Lists`
+
       $(".dishName").text(dish.data.attributes.name);
       $(".restaurantName").text(dish.included[0].attributes.name);
       $(".restaurantCuisine").text(dish.included[0].attributes.cuisine);
       $(".restaurantLocation").text(dish.included[0].attributes.location);
+      $("#popularity").text(popularityHtml)
+
       // // re-set the id to current id on 'next' link
       $(".js-next").attr("data-id", dish.data["id"]);
     });
@@ -60,7 +64,6 @@ $(function () {
       method: "POST"
     })
     .done(Dish.success)
-      // const html = `<li><strong><a href="/dishes/${json.data.id}">${json.data.attributes.name}</a></strong> | Added to 1 Dish-List</li><br><br>`
     .fail(Dish.fail)
   });
 });

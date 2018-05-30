@@ -1,14 +1,20 @@
 <a href="#" class="js-next" data-id="<%=@dish.id%>">next dish</a>
 
 <h1 class="dishName"><%= @dish.name %></h1>
-<h3 class="restaurantName">at <%= link_to @dish.restaurant.name, restaurant_path(@dish.restaurant) %></h3>
+<h3 class="restaurantName">at <%= @dish.restaurant.name %></h3>
 <br>
 
-<p class="restaurantCuisine"><strong>Type of cuisine:</strong> <%= @dish.restaurant.cuisine %></p>
+<div class="inline">
+  <p><strong>Type of cuisine: </strong></p><p class="restaurantCuisine"><%= @dish.restaurant.cuisine %></p>
+</div><br>
 
-<p class="restaurantLocation"><strong>Location:</strong> <%= @dish.restaurant.location %></p><br><br>
+<div class="inline">
+  <p><strong>Location:</strong> </p><p class="restaurantLocation"><%= @dish.restaurant.location %></p><br><br>
+</div><br>
 
-<%= render partial: "popularity", locals: {dish: @dish} %></h3><br><br>
+<div id="popularity">
+  <%= render partial: "popularity", locals: {dish: @dish} %></h3>
+</div><br>
 
 <div class="inline">
   <%= render partial: "add_remove_link", locals: {dish: @dish} %>
