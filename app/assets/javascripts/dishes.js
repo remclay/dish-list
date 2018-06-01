@@ -27,8 +27,9 @@ Dish.prototype.formatRestaurantDish = function() {
   return html
 }
 
-// On document ready
-$(function () {
+// On document ready or turbolinks load
+$( document ).on('ready turbolinks:load', function() {
+
   // Next dish button on dish show page
   $(".js-next").on("click", function(e) {
     e.preventDefault();
@@ -39,11 +40,12 @@ $(function () {
       // refactor into prototype method
       const dish = data
       const popularityHtml = `Added to ${dish.data.attributes.popularity} Dish-Lists`
-
+      // To do: extract into prototype method
       $(".dishName").text(dish.data.attributes.name);
       $(".restaurantName").text(dish.included[0].attributes.name);
       $(".restaurantCuisine").text(dish.included[0].attributes.cuisine);
       $(".restaurantLocation").text(dish.included[0].attributes.location);
+      // To do: add singular / plural html depending on popularity
       $("#popularity").text(popularityHtml)
 
       // // re-set the id to current id on 'next' link
