@@ -6,7 +6,7 @@ function ListItem(attributes) {
 }
 
 ListItem.remove = function(response) {
-  $("div#dish-id-"+response.dish_id).remove();
+  $("div#dish-id-"+response.data.attributes["dish-id"]).remove();
 }
 
 ListItem.fail = function(error) {
@@ -14,7 +14,8 @@ ListItem.fail = function(error) {
   console.log("Broken", error)
 }
 
-$(function () {
+// On document ready or turbolinks load
+$( document ).on('ready turbolinks:load', function() {
   // Delete list item when remove clicked
   $("form#remove_list_item").on("submit", function(e) {
     e.preventDefault();
@@ -31,4 +32,26 @@ $(function () {
     .done(ListItem.remove)
     .fail(ListItem.fail)
   });
+// })
+
+  // retrieve users list items
+  const list_id = window.location.pathname.slice(-1)
+  $.ajax({
+    url: "/list_items",
+    type: "GET",
+    data: {
+      list: list_id
+    }
+  })
+  .done(function(response) {
+    // debugger
+    jQuery.each(response, function() {
+    const list_item = new ListItem({id: json.data.attributes.name, list_id: json.data.id, dish_id: json.data.attributes['restaurant-id'], tasted: 0})
+    list_item.formatLI();
+  })
+
+  })
+  .fail(function(error) {
+    console.log(error)
+  })
 })
