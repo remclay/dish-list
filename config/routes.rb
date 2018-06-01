@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/welcome' => 'welcome#home'
 
-  resources :list_items, only: [:create, :destroy]
+  resources :list_items, only: [:create, :destroy, :index]
   resources :lists, only: [:show, :index]
   resources :dishes, only: [:show, :index, :create]
   resources :restaurants, only: [:show, :index, :create]

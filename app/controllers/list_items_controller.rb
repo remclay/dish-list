@@ -4,6 +4,12 @@ class ListItemsController < ApplicationController
   before_action :set_list_item, only: [:tasted, :destroy]
   layout 'application'
 
+  def index
+    list = List.find(params[:list])
+    list_items = list.list_items
+    render json: list_items, include: '**'
+  end
+
   # Add existing dish to current user's list
   def create
     list_item = @list.list_items.build(dish_id: params[:dish_id])
