@@ -53,12 +53,37 @@ $( document ).on('ready turbolinks:load', function() {
     });
   });
 
+  // Get new dish form
+  $("#button").on("click", function(e) {
+     e.preventDefault();
+     const $button = $(this);
+     const restaurant = $(this).data("restaurant-id");
+     const user = $(this).data("user")
+     // to do add authenticity_token
+     html = ''
+     html += '<form id="new_restaurant_dish" class="new_dish" action="/dishes" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="m9YexmmDnmoWqV/o+AabTDZnFcW3kSVdANRyj1ihwb+RAmlMLR+cmQVVGvScFhSzwASz8MOlb6zMEzN1boTtTQ==">'
+     html += '<label for="dish_name">Dish name: </label>'
+     html += '<input type="text" name="dish[name]" id="dish_name">'
+     html += `<input type="hidden" name="restaurant_id" id="restaurant_id" value="${restaurant}">`
+     html += '  <input type="submit" name="commit" value="Create Dish" class="form-submit" data-disable-with="Create Dish">'
+     html += '</form>'
+
+    $("#new_dish_form").append(html)
+    $("form#new_restaurant_dish").on("form-submit", function(e) {
+      // formSubmit(e);
+    })
+  });
+})
+
   // Submit new dish via ajax
-  $("form#new_restaurant_dish").on("submit", function(e) {
+  // $("form#new_restaurant_dish").on("form-submit", function(e) {
+  function formSubmit(e) {
+    debugger
     e.preventDefault();
     const $form = $(this)
     const action = $form.attr("action")
     const params = $form.serialize()
+    debugger
     $.ajax({
       url: action,
       data: params,
@@ -67,5 +92,4 @@ $( document ).on('ready turbolinks:load', function() {
     })
     .done(Dish.success)
     .fail(Dish.fail)
-  });
-});
+  }
