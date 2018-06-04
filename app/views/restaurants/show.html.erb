@@ -16,14 +16,8 @@
 </ul>
 <%#= button_to  'add new dish', new_user_dish_path(user_id: current_user.id), params: {'restaurant[id]' => params[:id]} %>
 
-<button id="button" data-url="/users/<%= current_user.id %>/dishes/new">Add new dish</button>
-
 <div id="new_dish_form">
 </div>
+<br>
 
-<%= form_for @restaurant.dishes.build, :url => dishes_path, :html => { :id => "new_restaurant_dish" } do |f| %>
-  <%= f.label :name, "Dish name:" %>
-  <%= f.text_field :name %>
-  <%= hidden_field_tag 'restaurant_id', params[:id] %>
-  <%= f.submit :class => "form-submit" %>
-<% end %>
+<button id="button" data-restaurant-id="<%= @restaurant.id %>" data-user="<%= current_user.id %>">Add new dish</button>
