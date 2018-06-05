@@ -1,11 +1,11 @@
 <h1>Dish-Lists</h1>
 
-<h3>Click on a user to view their Dish-List</h3>
+<h3>Click on a user's name to view their full Dish-List, or click preview to view without leaving this page</h3>
 <br>
 
-<% @lists.each do |list| %>
 <ul>
-  <li><%= link_to list.user.name, list_path(list) %> | Last updated: <%= ListsHelper.last_updated(list) %>
-  | <%= link_to "view list", list_path(list), id: "view_list" %> </li>
+  <% @lists.each do |list| %>
+    <li id="<%= list.id %>"><strong><%= link_to list.user.name, list_path(list) %></strong> | Last updated: <%= ListsHelper.last_updated(list) %> | <%= link_to "preview list", list_path(list), class: "view_list", id: "#{list.id}" %></li>
+    <br>
+  <% end %>
 </ul>
-<% end %>
