@@ -7,7 +7,7 @@ class ListItemsController < ApplicationController
   def index
     list = List.find(params[:list])
     list_items = list.list_items
-    render json: list_items, include: '**'
+    render json: list_items
   end
 
   # Add existing dish to current user's list
