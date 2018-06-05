@@ -15,21 +15,14 @@ ListItem.fail = function(error) {
   console.log("Broken", error)
 }
 
-ListItem.prototype.formatLI = function() {
+ListItem.prototype.formatLI = function(index) {
   html = ''
   html += `<div class="inline">`
+  html += `<strong>${index + 1}. </strong>`
   html += `<a href="/dishes/${this.dish_id}">${this.dish_name}</a> | ${this.restaurant_name} | ${this.restaurant_location}`
   html += `</div><br>`
   return html
 }
-
-//   <form id="remove_list_item" class="button_to" method="post" action="/list_items/8">
-//     <input type="hidden" name="_method" value="delete">
-//     <input type="submit" value="remove">
-//     <input type="hidden" name="authenticity_token" value="wVUuGhOYXQbIDIXHaUqCzqqw6ieLqOp5pUedftbED7XLgVmQVwRf9dvwwNsNWg0xXNNMEv+coIhpgNyE4OEjRw==">
-//     <input type="hidden" name="dish_id" value="1">
-//   </form>
-// </div>
 
 // On document ready or turbolinks load
 $( document ).on('ready turbolinks:load', function() {
@@ -62,9 +55,9 @@ $( document ).on('ready turbolinks:load', function() {
     }
   })
   .done(function(response) {
-    response.data.forEach(function(li) {
+    response.data.forEach(function(li, index) {
       const list_item = new ListItem({id: li.id, dish_id: li.attributes["dish-id"], dish_name: li.attributes["dish-name"], restaurant_name: li.attributes["restaurant-name"], restaurant_location: li.attributes["restaurant-location"]})
-      list_item_HTML = list_item.formatLI();
+      list_item_HTML = list_item.formatLI(index);
       $("#list_items").append(list_item_HTML)
     })
   })
