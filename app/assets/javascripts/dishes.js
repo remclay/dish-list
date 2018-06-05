@@ -10,8 +10,8 @@ Dish.success = function(json) {
   const dish = new Dish({name: json.data.attributes.name, id: json.data.id, restaurant_id: json.data.attributes['restaurant-id'], popularity: 0})
   dishHtml = dish.formatRestaurantDish();
   $("#restaurant_show").append(dishHtml);
-  // Need to also reset submit button
-  $("form").trigger("reset");
+  // Remove form
+  $("#new_dish_form").empty();
 }
 
 // If ajax post request doesn't work, display error message
@@ -37,7 +37,7 @@ $( document ).on('ready turbolinks:load', function() {
     $.get("/dishes/" + nextId + ".json", function(data) {
       // basic check if there is another dish to display
       if (data === null) {
-        alert("There are no more dishes to show.")
+        alert("This is the last dish.")
         $(".js-next").text('')
       } else {
         const dish = data
@@ -64,35 +64,30 @@ $( document ).on('ready turbolinks:load', function() {
      const user = $(this).data("user")
      // to do add authenticity_token
      html = ''
-     html += '<form id="new_restaurant_dish" class="new_dish" action="/dishes" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="m9YexmmDnmoWqV/o+AabTDZnFcW3kSVdANRyj1ihwb+RAmlMLR+cmQVVGvScFhSzwASz8MOlb6zMEzN1boTtTQ==">'
+     html += '<form id="new_restaurant_dish" class="new_dish" action="/dishes" accept-charset="UTF-8" method="post">'
+     // html += '<input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="m9YexmmDnmoWqV/o+AabTDZnFcW3kSVdANRyj1ihwb+RAmlMLR+cmQVVGvScFhSzwASz8MOlb6zMEzN1boTtTQ==">'
      html += '<label for="dish_name">Dish name: </label>'
      html += '<input type="text" name="dish[name]" id="dish_name">'
      html += `<input type="hidden" name="restaurant_id" id="restaurant_id" value="${restaurant}">`
      html += '  <input type="submit" name="commit" value="Create Dish" class="form-submit" data-disable-with="Create Dish">'
-     html += '</form>'
+     html += '</form><br>'
 
-    $("#new_dish_form").append(html)
-    $("form#new_restaurant_dish").on("form-submit", function(e) {
-      // formSubmit(e);
-    })
+    $("#new_dish_form").append(html);
+
+    // Create new dish via ajax post request
+    $("form#new_restaurant_dish").on("submit", function(e) {
+      e.preventDefault();
+      const $form = $(this)
+      const action = $form.attr("action")
+      const params = $form.serialize()
+      $.ajax({
+        url: action,
+        data: params,
+        dataType: "json",
+        method: "POST"
+      })
+      .done(Dish.success)
+      .fail(Dish.fail)
+    });
   });
-})
-
-  // Submit new dish via ajax
-  // $("form#new_restaurant_dish").on("form-submit", function(e) {
-  function formSubmit(e) {
-    debugger
-    e.preventDefault();
-    const $form = $(this)
-    const action = $form.attr("action")
-    const params = $form.serialize()
-    debugger
-    $.ajax({
-      url: action,
-      data: params,
-      dataType: "json",
-      method: "POST"
-    })
-    .done(Dish.success)
-    .fail(Dish.fail)
-  }
+});
