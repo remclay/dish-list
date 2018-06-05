@@ -130,6 +130,10 @@
   box-shadow: 1px 2px;
 }
 
+.user-list-items {
+  font-size: 12px;
+}
+
 .form-submit {
   font-size: 15px;
   border-color: #00001a;

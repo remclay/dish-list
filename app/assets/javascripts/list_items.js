@@ -16,10 +16,8 @@ ListItem.fail = function(error) {
 
 ListItem.prototype.formatLI = function(index) {
   html = ''
-  html += `<div class="inline">`
-  html += `<strong>${index + 1}. </strong>`
-  html += `<a href="/dishes/${this.dish_id}">${this.dish_name}</a> | ${this.restaurant_name} | ${this.restaurant_location}`
-  html += `</div><br>`
+  html += `<br><strong>${index + 1}. </strong>`
+  html += `<a href="/dishes/${this.dish_id}">${this.dish_name}</a> | ${this.restaurant_name} | ${this.restaurant_location} <br>`
   return html
 }
 
@@ -44,23 +42,30 @@ $( document ).on('ready turbolinks:load', function() {
 // })
 
   // retrieve users list items
-  // NEED TO PROPERLY RETREIVE THIS
-  const list_id = window.location.pathname.slice(-1)
-  $.ajax({
-    url: "/list_items",
-    type: "GET",
-    data: {
-      list: list_id
-    }
-  })
-  .done(function(response) {
-    response.data.forEach(function(li, index) {
-      const list_item = new ListItem({id: li.id, dish_id: li.attributes["dish-id"], dish_name: li.attributes["dish-name"], restaurant_name: li.attributes["restaurant-name"], restaurant_location: li.attributes["restaurant-location"]})
-      list_item_HTML = list_item.formatLI(index);
-      $("#list_items").append(list_item_HTML)
+  $(".view_list").on("click", function(e) {
+    e.preventDefault();
+    const $link = $(this);
+    const list_id = $link[0].id
+
+    $.ajax({
+      url: "/list_items",
+      type: "GET",
+      data: {
+        list: list_id
+      }
     })
-  })
-  .fail(function(error) {
-    console.error("Error", error)
-  })
+    .done(function(response) {
+      const list_id = response.data[0].attributes["list-id"]
+      let list_item_HTML = `<div class="user-list-items"><br>`
+      response.data.forEach(function(li, index) {
+        const list_item = new ListItem({id: li.id, dish_id: li.attributes["dish-id"], dish_name: li.attributes["dish-name"], restaurant_name: li.attributes["restaurant-name"], restaurant_location: li.attributes["restaurant-location"]})
+        list_item_HTML += list_item.formatLI(index);
+      })
+      list_item_HTML += '</div><br>'
+      $(`li#${list_id}`).append(list_item_HTML)
+    })
+    .fail(function(error) {
+      console.error("Error", error)
+    });
+  });
 })
