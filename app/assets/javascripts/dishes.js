@@ -35,19 +35,24 @@ $( document ).on('ready turbolinks:load', function() {
 
     // fix this to ask for json not hard code json extension
     $.get("/dishes/" + nextId + ".json", function(data) {
-      // refactor into prototype method
-      const dish = data
-      const popularityHtml = `Added to ${dish.data.attributes.popularity} Dish-Lists`
-      // To do: extract into prototype method
-      $(".dishName").text(dish.data.attributes.name);
-      $(".restaurantName").text(dish.included[0].attributes.name);
-      $(".restaurantCuisine").text(dish.included[0].attributes.cuisine);
-      $(".restaurantLocation").text(dish.included[0].attributes.location);
-      // To do: add singular / plural html depending on popularity
-      $("#popularity").text(popularityHtml)
+      // basic check if there is another dish to display
+      if (data === null) {
+        alert("There are no more dishes to show.")
+        $(".js-next").text('')
+      } else {
+        const dish = data
+        const popularityHtml = `Added to ${dish.data.attributes.popularity} Dish-Lists`
+        // To do: extract into prototype method
+        $(".dishName").text(dish.data.attributes.name);
+        $(".restaurantName").text(dish.included[0].attributes.name);
+        $(".restaurantCuisine").text(dish.included[0].attributes.cuisine);
+        $(".restaurantLocation").text(dish.included[0].attributes.location);
+        // To do: add singular / plural html depending on popularity
+        $("#popularity").text(popularityHtml)
 
-      // // re-set the id to current id on 'next' link
-      $(".js-next").attr("data-id", dish.data["id"]);
+        // // re-set the id to current id on 'next' link
+        $(".js-next").attr("data-id", dish.data["id"]);
+      };
     });
   });
 
