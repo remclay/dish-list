@@ -11,8 +11,7 @@ ListItem.remove = function(response) {
 }
 
 ListItem.fail = function(error) {
-  // TO DO
-  console.log("Broken", error)
+  console.error("Error", error)
 }
 
 ListItem.prototype.formatLI = function(index) {
@@ -62,6 +61,6 @@ $( document ).on('ready turbolinks:load', function() {
     })
   })
   .fail(function(error) {
-    console.log(error)
+    console.error("Error", error)
   })
 })

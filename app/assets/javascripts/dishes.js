@@ -14,11 +14,9 @@ Dish.success = function(json) {
   $("form").trigger("reset");
 }
 
-// Display error message
-Dish.fail = function(response) {
-  // if ajax post request doesn't work
-  // TO DO
-  console.log("Broken", response);
+// If ajax post request doesn't work, display error message
+Dish.fail = function(error) {
+  console.error("Error", error);
 }
 
 Dish.prototype.formatRestaurantDish = function() {
