@@ -35,7 +35,7 @@ Dish.prototype.formatDishShow = function() {
   html += `<div class="inline"><p><strong>Type of cuisine: </strong>${this.restaurant_cuisine}</p></div><br>`
   html += `<div class="inline"><p><strong>Location:</strong>${this.restaurant_location}</p><br><br><br></div>`
   if(this.popularity === 1) {
-    html += `<div>Added to 1 Dish-List</div>`
+    html += '<div>Added to 1 Dish-List</div>'
   } else {
     html += `<div>Added to ${this.popularity} Dish-Lists</div>`
   }
@@ -48,22 +48,32 @@ $( document ).on('ready turbolinks:load', function() {
   // Next dish button on dish show page
   $(".js-next").on("click", function(e) {
     e.preventDefault();
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    let dishIndexes
+    let nextIndex
 
-    // fix this to ask for json not hard code json extension
-    $.get("/dishes/" + nextId + ".json", function(data) {
-      // basic check if there is another dish to display
-      if (data === null) {
-        alert("This is the last dish.")
-        $(".js-next").text('')
+    $.get("/dishes.json", function(response) {
+      dishIndexes = response.data.map(dish => parseInt(dish.id))
+    })
+    .done(function() {
+      let currentId = parseInt($(".js-next").attr("data-id"))
+      let currentIndex = dishIndexes.indexOf(currentId)
+      // If reached last dish, start at beginning
+      if(currentIndex === (dishIndexes.length -1)){
+        nextIndex = 0
       } else {
+        nextIndex = currentIndex + 1
+      }
+      let nextId = dishIndexes[nextIndex]
+
+    $.get("/dishes/" + nextId + ".json", function(data) {
+
         const dish = data
         const next_dish = new Dish({name: dish.data.attributes.name, restaurant_id: dish.data.attributes["restaurant-id"], restaurant_name: dish.included[0].attributes.name, restaurant_cuisine: dish.included[0].attributes.cuisine, restaurant_location: dish.included[0].attributes.location, popularity: dish.data.attributes.popularity})
         dishHtml = next_dish.formatDishShow();
         $(".dish-show").html(dishHtml);
-        // // re-set the id to current id on 'next' link
+        // // re-set the id on 'next dish' link to current id
         $(".js-next").attr("data-id", dish.data["id"]);
-      };
+      })
     });
   });
 
