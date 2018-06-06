@@ -14,6 +14,10 @@ class DishesController < ApplicationController
     # Accessing all dishes
       @dishes = Dish.all
     end
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render :json => @dishes, each_serializer: DishSimpleSerializer}
+    end
   end
 
   def new
