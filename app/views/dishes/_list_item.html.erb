@@ -10,6 +10,10 @@
     <%= button_to "tasted", user_dish_tasted_path(dish_id: dish), :method => :post, params: {dish_id: dish.id} %>
   <% end %>
 
-  <%= render partial: "add_remove_link", locals: {dish: dish} %>
+  <% if params[:user_id] %>
+    <%= render partial: "add_remove_link", locals: {dish: dish} %>
+  <% else %>
+    <%= render partial: "add_link", locals: {dish: dish} %>
+  <% end %>
   <br><br>
 </div>
