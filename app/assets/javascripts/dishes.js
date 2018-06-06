@@ -3,6 +3,9 @@ function Dish(attributes) {
   this.id = attributes.id
   this.popularity = attributes.popularity
   this.restaurant_id = attributes.restaurant_id
+  this.restaurant_name = attributes.restaurant_name
+  this.restaurant_cuisine = attributes.restaurant_cuisine
+  this.restaurant_location = attributes.restaurant_location
 }
 
 // Create html to display new dish and append to dom
@@ -25,6 +28,20 @@ Dish.prototype.formatRestaurantDish = function() {
   return html
 }
 
+Dish.prototype.formatDishShow = function() {
+  let html = ''
+  html += `<h1>${this.name}</h1>`
+  html += `<h3>at <a href="/restaurants/${this.restaurant_id}">${this.restaurant_name}</a></h3><br>`
+  html += `<div class="inline"><p><strong>Type of cuisine: </strong>${this.restaurant_cuisine}</p></div><br>`
+  html += `<div class="inline"><p><strong>Location:</strong>${this.restaurant_location}</p><br><br><br></div>`
+  if(this.popularity === 1) {
+    html += `<div>Added to 1 Dish-List</div>`
+  } else {
+    html += `<div>Added to ${this.popularity} Dish-Lists</div>`
+  }
+  return html
+}
+
 // On document ready or turbolinks load
 $( document ).on('ready turbolinks:load', function() {
 
@@ -41,15 +58,9 @@ $( document ).on('ready turbolinks:load', function() {
         $(".js-next").text('')
       } else {
         const dish = data
-        const popularityHtml = `Added to ${dish.data.attributes.popularity} Dish-Lists`
-        // To do: extract into prototype method
-        $(".dishName").text(dish.data.attributes.name);
-        $(".restaurantName").text(dish.included[0].attributes.name);
-        $(".restaurantCuisine").text(dish.included[0].attributes.cuisine);
-        $(".restaurantLocation").text(dish.included[0].attributes.location);
-        // To do: add singular / plural html depending on popularity
-        $("#popularity").text(popularityHtml)
-
+        const next_dish = new Dish({name: dish.data.attributes.name, restaurant_id: dish.data.attributes["restaurant-id"], restaurant_name: dish.included[0].attributes.name, restaurant_cuisine: dish.included[0].attributes.cuisine, restaurant_location: dish.included[0].attributes.location, popularity: dish.data.attributes.popularity})
+        dishHtml = next_dish.formatDishShow();
+        $(".dish-show").html(dishHtml);
         // // re-set the id to current id on 'next' link
         $(".js-next").attr("data-id", dish.data["id"]);
       };
