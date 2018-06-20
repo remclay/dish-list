@@ -1,9 +1,9 @@
 function ListItem(attributes) {
   this.id = attributes.id
-  this.dish_id = attributes.dish_id
-  this.dish_name = attributes.dish_name
-  this.restaurant_name = attributes.restaurant_name
-  this.restaurant_location = attributes.restaurant_location
+  this.dishId = attributes.dishId
+  this.dishName = attributes.dishName
+  this.restaurantName = attributes.restaurantName
+  this.restaurantLocation = attributes.restaurantLocation
 }
 
 ListItem.remove = function(response) {
@@ -17,7 +17,7 @@ ListItem.fail = function(error) {
 ListItem.prototype.formatLI = function(index) {
   html = ''
   html += `<br><strong>${index + 1}. </strong>`
-  html += `<a href="/dishes/${this.dish_id}">${this.dish_name}</a> | ${this.restaurant_name} | ${this.restaurant_location} <br>`
+  html += `<a href="/dishes/${this.dishId}">${this.dishName}</a> | ${this.restaurantName} | ${this.restaurantLocation} <br>`
   return html
 }
 
@@ -45,24 +45,34 @@ $( document ).on('turbolinks:load', function() {
   $(".view_list").on("click", function(e) {
     e.preventDefault();
     const $link = $(this);
-    const list_id = $link[0].id
+    const listId = $link[0].id
 
     $.ajax({
       url: "/list_items",
       type: "GET",
       data: {
-        list: list_id
+        list: listId
       }
     })
     .done(function(response) {
-      const list_id = response.data[0].attributes["list-id"]
-      let list_item_HTML = `<div class="user-list-items"><br>`
-      response.data.forEach(function(li, index) {
-        const list_item = new ListItem({id: li.id, dish_id: li.attributes["dish-id"], dish_name: li.attributes["dish-name"], restaurant_name: li.attributes["restaurant-name"], restaurant_location: li.attributes["restaurant-location"]})
-        list_item_HTML += list_item.formatLI(index);
+      const listId = response.data[0].attributes["list-id"]
+      let listItemHTML = `<div class="user-list-items"><br>`
+      // order list items by restaurant name
+      response.data.sort(function (a, b) {
+        if (a.attributes["restaurant-name"] < b.attributes["restaurant-name"]) {
+          return -1
+        } if (a.attributes["restaurant-name"] > b.attributes["restaurant-name"]) {
+          return 1
+        } else {
+          return 0
+        }
       })
-      list_item_HTML += '</div><br>'
-      $(`li#${list_id}`).append(list_item_HTML)
+      response.data.forEach(function(li, index) {
+        const listItem = new ListItem({id: li.id, dishId: li.attributes["dish-id"], dishName: li.attributes["dish-name"], restaurantName: li.attributes["restaurant-name"], restaurantLocation: li.attributes["restaurant-location"]})
+        listItemHTML += listItem.formatLI(index);
+      })
+      listItemHTML += '</div><br>'
+      $(`li#${listId}`).append(listItemHTML)
     })
     .fail(function(error) {
       console.error("Error", error)
