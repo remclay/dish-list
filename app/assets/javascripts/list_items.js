@@ -56,9 +56,9 @@ $( document ).on('turbolinks:load', function() {
       let listItemHTML = `<div class="user-list-items"><br>`
       // order list items by restaurant name
       response.data.sort(function (a, b) {
-        if (a.attributes["restaurant-name"] < b.attributes["restaurant-name"]) {
+        if (a.attributes["restaurant-name"].toUpperCase() < b.attributes["restaurant-name"].toUpperCase()) {
           return -1
-        } if (a.attributes["restaurant-name"] > b.attributes["restaurant-name"]) {
+        } if (a.attributes["restaurant-name"].toUpperCase() > b.attributes["restaurant-name"].toUpperCase()) {
           return 1
         } else {
           return 0
