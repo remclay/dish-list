@@ -15,10 +15,7 @@ ListItem.fail = function(error) {
 }
 
 ListItem.prototype.formatLI = function(index) {
-  html = ''
-  html += `<br><strong>${index + 1}. </strong>`
-  html += `<a href="/dishes/${this.dishId}">${this.dishName}</a> | ${this.restaurantName} | ${this.restaurantLocation} <br>`
-  return html
+  return `<br><strong>${index + 1}. </strong><a href="/dishes/${this.dishId}">${this.dishName}</a> | ${this.restaurantName} | ${this.restaurantLocation} <br>`
 }
 
 // On document ready or turbolinks load
