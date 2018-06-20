@@ -22,7 +22,7 @@ ListItem.prototype.formatLI = function(index) {
 }
 
 // On document ready or turbolinks load
-$( document ).on('ready turbolinks:load', function() {
+$( document ).on('turbolinks:load', function() {
   // Delete list item when remove clicked
   $("form#remove_list_item").on("submit", function(e) {
     e.preventDefault();

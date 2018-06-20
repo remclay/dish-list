@@ -43,7 +43,7 @@ Dish.prototype.formatDishShow = function() {
 }
 
 // On document ready or turbolinks load
-$( document ).on('ready turbolinks:load', function() {
+$( document ).on('turbolinks:load', function() {
 
   // Next dish button on dish show page
   $(".js-next").on("click", function(e) {
