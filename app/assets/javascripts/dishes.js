@@ -2,16 +2,16 @@ function Dish(attributes) {
   this.name = attributes.name
   this.id = attributes.id
   this.popularity = attributes.popularity
-  this.restaurant_id = attributes.restaurant_id
-  this.restaurant_name = attributes.restaurant_name
-  this.restaurant_cuisine = attributes.restaurant_cuisine
-  this.restaurant_location = attributes.restaurant_location
+  this.restaurantId = attributes.restaurantId
+  this.restaurantName = attributes.restaurantName
+  this.restaurantCuisine = attributes.restaurantCuisine
+  this.restaurantLocation = attributes.restaurantLocation
 }
 
 // Create html to display new dish and append to dom
 Dish.success = function(json) {
-  const dish = new Dish({name: json.data.attributes.name, id: json.data.id, restaurant_id: json.data.attributes['restaurant-id'], popularity: 0})
-  dishHtml = dish.formatRestaurantDish();
+  const dish = new Dish({name: json.data.attributes.name, id: json.data.id, restaurantId: json.data.attributes['restaurant-id'], popularity: 0})
+  const dishHtml = dish.formatRestaurantDish();
   $("#restaurant_show").append(dishHtml);
   // Remove form
   $("#new_dish_form").empty();
@@ -23,22 +23,17 @@ Dish.fail = function(error) {
 }
 
 Dish.prototype.formatRestaurantDish = function() {
-  var html = ''
-  html += `<li><strong><a href="/dishes/${this.id}">${this.name}</a></strong> | Added to 1 Dish-List</li><br><br>`
-  return html
+  return `<li><strong><a href="/dishes/${this.id}">${this.name}</a></strong> | Added to 1 Dish-List</li><br><br>`
 }
 
 Dish.prototype.formatDishShow = function() {
-  let html = ''
-  html += `<h1>${this.name}</h1>`
-  html += `<h3>at <a href="/restaurants/${this.restaurant_id}">${this.restaurant_name}</a></h3><br>`
-  html += `<div class="inline"><p><strong>Type of cuisine: </strong>${this.restaurant_cuisine}</p></div><br>`
-  html += `<div class="inline"><p><strong>Location:</strong>${this.restaurant_location}</p><br><br><br></div>`
-  if(this.popularity === 1) {
-    html += '<div>Added to 1 Dish-List</div>'
-  } else {
-    html += `<div>Added to ${this.popularity} Dish-Lists</div>`
-  }
+  let html = `
+    <h1>${this.name}</h1>
+    <h3>at <a href="/restaurants/${this.restaurantId}">${this.restaurantName}</a></h3><br>
+    <div class="inline"><p><strong>Type of cuisine: </strong>${this.restaurantCuisine}</p></div><br>
+    <div class="inline"><p><strong>Location:</strong>${this.restaurantLocation}</p><br><br><br></div>
+  `
+  html += (this.popularity === 1) ? '<div>Added to 1 Dish-List</div>' : `<div>Added to ${this.popularity} Dish-Lists</div>`
   return html
 }
 
@@ -68,8 +63,8 @@ $( document ).on('turbolinks:load', function() {
     $.get("/dishes/" + nextId + ".json", function(data) {
 
         const dish = data
-        const next_dish = new Dish({name: dish.data.attributes.name, restaurant_id: dish.data.attributes["restaurant-id"], restaurant_name: dish.included[0].attributes.name, restaurant_cuisine: dish.included[0].attributes.cuisine, restaurant_location: dish.included[0].attributes.location, popularity: dish.data.attributes.popularity})
-        dishHtml = next_dish.formatDishShow();
+        const nextDish = new Dish({name: dish.data.attributes.name, restaurantId: dish.data.attributes["restaurant-id"], restaurantName: dish.included[0].attributes.name, restaurantCuisine: dish.included[0].attributes.cuisine, restaurantLocation: dish.included[0].attributes.location, popularity: dish.data.attributes.popularity})
+        dishHtml = nextDish.formatDishShow();
         $(".dish-show").html(dishHtml);
         // // re-set the id on 'next dish' link to current id
         $(".js-next").attr("data-id", dish.data["id"]);
@@ -84,15 +79,14 @@ $( document ).on('turbolinks:load', function() {
      const restaurant = $(this).data("restaurant-id");
      const user = $(this).data("user")
      // to do add authenticity_token
-     html = ''
-     html += '<form id="new_restaurant_dish" class="new_dish" action="/dishes" accept-charset="UTF-8" method="post">'
-     // html += '<input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="m9YexmmDnmoWqV/o+AabTDZnFcW3kSVdANRyj1ihwb+RAmlMLR+cmQVVGvScFhSzwASz8MOlb6zMEzN1boTtTQ==">'
-     html += '<label for="dish_name">Dish name: </label>'
-     html += '<input type="text" name="dish[name]" id="dish_name">'
-     html += `<input type="hidden" name="restaurant_id" id="restaurant_id" value="${restaurant}">`
-     html += '  <input type="submit" name="commit" value="Create Dish" class="form-submit" data-disable-with="Create Dish">'
-     html += '</form><br>'
-
+     const html = `
+        <form id="new_restaurant_dish" class="new_dish" action="/dishes" accept-charset="UTF-8" method="post">
+          <label for="dish_name">Dish name: </label>
+          <input type="text" name="dish[name]" id="dish_name">
+          <input type="hidden" name="restaurant_id" id="restaurant_id" value="${restaurant}">
+          <input type="submit" name="commit" value="Create Dish" class="form-submit" data-disable-with="Create Dish">
+        </form><br>
+      `
     $("#new_dish_form").append(html);
 
     // Create new dish via ajax post request
@@ -101,6 +95,7 @@ $( document ).on('turbolinks:load', function() {
       const $form = $(this)
       const action = $form.attr("action")
       const params = $form.serialize()
+
       $.ajax({
         url: action,
         data: params,
