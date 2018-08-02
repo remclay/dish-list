@@ -63,3 +63,7 @@ gem 'bcrypt'
 gem 'dotenv-rails'
 gem 'thin'
 gem 'validates_email_format_of'
+
+group :production do
+  gem 'rails_12factor'
+end
