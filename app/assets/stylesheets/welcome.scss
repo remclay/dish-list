@@ -37,8 +37,8 @@ grid-template-areas:
  text-justify: center;
  letter-spacing: 3px;
  line-height: 70%;
- background-image: url('<%= asset_path('header.jpg') %>');
- /* background-image: asset-url("header.jpg"); */
+ /* background: url('<%= asset_url('header.jpg') %>'); */
+ background-image: url(asset-path("header.jpg"));
  /* background: url("https://unsplash.com/photos/98Xi5vMGKck"); */
  background-size: cover;
  background-position: bottom right;
